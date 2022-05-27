@@ -1,0 +1,20 @@
+body {
+  height: 300px;
+  width: 200px;
+}
+.button {
+  width: 120px;
+  height: 32px;
+  background-color: rgb(78, 221, 190);
+  border-radius: 10px;
+  border: 0;
+  box-shadow: 0 0 3px;
+  margin: 10px;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: rgb(55, 153, 132);
+}
+.button:active {
+  background-color: rgb(39, 111, 95);
+}
