@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="button.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <button id="savePlaylist" class="button savePlaylist">Save playlist</button>
-    <button class="button deletedVideos_button">See deleted videos</button>
+    <div class="button_container">
+      <button id="savePlaylist" class="button savePlaylist">
+        Save playlist
+      </button>
+      <button class="button deletedVideos_button">See deleted videos</button>
+    </div>
     <ul class="deletedVideos_list"></ul>
     <script src="popup.js" src="deletedVideos.js"></script>
   </body>
