@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="134" height="134" viewBox="0 0 134 134">
+  <g id="Group_1" data-name="Group 1" transform="translate(-61 -31)">
+    <g id="Icon_feather-trash" data-name="Icon feather-trash" transform="translate(137.773 79)">
+      <path id="Path_1" data-name="Path 1" d="M4.5,9H38.927" transform="translate(-4.5 -1.35)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <path id="Path_2" data-name="Path 2" d="M34.276,10.65V37.427a3.825,3.825,0,0,1-3.825,3.825H11.325A3.825,3.825,0,0,1,7.5,37.427V10.65m5.738,0V6.825A3.825,3.825,0,0,1,17.063,3h7.65a3.825,3.825,0,0,1,3.825,3.825V10.65" transform="translate(-3.675 -3)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    </g>
+    <g id="Icon_feather-save" data-name="Icon feather-save" transform="translate(83.567 79)">
+      <path id="Path_3" data-name="Path 3" d="M38.5,42.752H8.75A4.25,4.25,0,0,1,4.5,38.5V8.75A4.25,4.25,0,0,1,8.75,4.5H32.126L42.752,15.126V38.5A4.25,4.25,0,0,1,38.5,42.752Z" transform="translate(-4.5 -4.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <path id="Path_4" data-name="Path 4" d="M31.751,36.5v-17H10.5v17" transform="translate(-2 1.751)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <path id="Path_5" data-name="Path 5" d="M10.5,4.5V15.126h17" transform="translate(-2 -4.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    </g>
+    <g id="Rectangle_1" data-name="Rectangle 1" transform="translate(61 31)" fill="none" stroke="#707070" stroke-width="1">
+      <rect width="134" height="134" rx="12" stroke="none"/>
+      <rect x="0.5" y="0.5" width="133" height="133" rx="11.5" fill="none"/>
+    </g>
+  </g>
+</svg>

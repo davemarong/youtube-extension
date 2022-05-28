@@ -1,4 +1,5 @@
 let savePlaylist_button = document.querySelector(".savePlaylist");
+let message = document.querySelector(".message");
 
 savePlaylist.addEventListener("click", async () => {
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -19,7 +20,7 @@ const handlePlaylist = () => {
   // Fetch playlist and deletedVideos from Chrome storage
   chrome.storage.sync.get(["data"], ({ data }) => {
     const { playlist, deletedVideos } = data;
-    console.log("From savePlaylist", deletedVideos);
+
     // Filter out videos that are not found in oldPlaylist and currentPlaylist
     const newlyDeletedVideos = playlist.filter((video) => {
       return !currentPlaylist.includes(video);
@@ -29,9 +30,14 @@ const handlePlaylist = () => {
     chrome.storage.sync.set({
       data: {
         playlist: [...currentPlaylist, "dude"],
-        deletedVideos: [...data.deletedVideos, ...newlyDeletedVideos],
+        deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
       },
     });
   });
-  console.log("save play");
+
+  if (currentPlaylist.length > 0) {
+    alert("Playlist saved");
+  } else {
+    alert("Playlist not found");
+  }
 };

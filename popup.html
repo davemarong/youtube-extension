@@ -4,13 +4,49 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="button_container">
-      <button id="savePlaylist" class="button savePlaylist">
-        Save playlist
-      </button>
-      <button class="button deletedVideos_button">See deleted videos</button>
+    <div class="splitScreen">
+      <div class="splitScreen_left">
+        <div class="sidebar">
+          <div class="logo"><img src="./images/logo.svg" height="75" /></div>
+          <div class="nav">
+            <div id="savePlaylist" class="button savePlaylist">
+              <label class="navItem">
+                <input type="radio" name="nav" />
+                <p>Find playlist from this youtube page</p>
+              </label>
+            </div>
+            <div class="button deletedVideos_button">
+              <label class="navItem">
+                <input type="radio" name="nav" />
+                <p>See deleted videos</p>
+              </label>
+            </div>
+            <div>
+              <label class="navItem">
+                <input type="radio" name="nav" />
+                <p>Show my saved playlist</p>
+              </label>
+            </div>
+            <div>
+              <label class="navItem">
+                <input type="radio" name="nav" />
+                <p>Empty my deleted videos list</p>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="splitScreen_right">
+        <div class="headline">
+          <h1>Youtube - Save deleted video titles</h1>
+        </div>
+        <div class="content">
+          <ul class="deletedVideos_list"></ul>
+          <div class="message"></div>
+        </div>
+      </div>
     </div>
-    <ul class="deletedVideos_list"></ul>
+
     <script src="savePlaylist.js"></script>
     <script src="deletedVideos.js"></script>
   </body>
