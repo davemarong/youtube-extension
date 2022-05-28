@@ -9,34 +9,50 @@ const handlePlaylist = () => {
   );
 
   // Get previous playlist and previous deleted videos from local storage
-  let previousPlaylist = localStorage.getItem("playlist");
-  let previousDeletedVideos = localStorage.getItem("deletedVideos");
+  // let previousPlaylist = localStorage.getItem("playlist");
+  // let previousDeletedVideos = localStorage.getItem("deletedVideos");
+  // chrome.storage.sync.get("playlists", (playlists) => {
+  //   if (playlists?.playlist) {
+  //     let newlyDeletedVideos = playlists.playlist.filter((video) => {
+  //       return !playlists.playlist.includes(video);
+  //     });
+  //     console.log(newlyDeletedVideos);
+  //   }
+  //   chrome.storage.sync.set(
+  //     { ...playlists, playlist: currentPlaylist },
+  //     (playlists) => {
+  //       console.log(playlists);
+  //     }
+  //   );
+  //   console.log(playlists);
+  // });
+  // chrome.storage.sync.set();
 
   // If previousDeletedVideos have videos inside, then parse it
-  if (previousDeletedVideos) {
-    previousDeletedVideos = JSON.parse(previousDeletedVideos);
-  } else {
-    previousDeletedVideos = [];
-  }
+  // if (previousDeletedVideos) {
+  //   previousDeletedVideos = JSON.parse(previousDeletedVideos);
+  // } else {
+  //   previousDeletedVideos = [];
+  // }
 
-  let deletedVideos = [];
+  // let deletedVideos = [];
 
-  // If previousPlaylist is falsey, then we cant JSON.parse
-  if (!previousPlaylist) {
-    previousPlaylist = [];
-  } else {
-    // Compare playlists and extract videos that are missing from currentPlaylist
-    deletedVideos = JSON.parse(previousPlaylist).filter((video) => {
-      return !currentPlaylist.includes(video);
-    });
-    deletedVideos = [...previousDeletedVideos, ...deletedVideos];
-  }
+  // // If previousPlaylist is falsey, then we cant JSON.parse
+  // if (!previousPlaylist) {
+  //   previousPlaylist = [];
+  // } else {
+  //   // Compare playlists and extract videos that are missing from currentPlaylist
+  //   deletedVideos = JSON.parse(previousPlaylist).filter((video) => {
+  //     return !currentPlaylist.includes(video);
+  //   });
+  //   deletedVideos = [...previousDeletedVideos, ...deletedVideos];
+  // }
 
-  // If deletedVideos is truthy, dont send to local storage
-  if (deletedVideos) {
-    localStorage.setItem("deletedVideos", JSON.stringify(deletedVideos));
-  }
-  localStorage.setItem("playlist", JSON.stringify(currentPlaylist));
+  // // If deletedVideos is truthy, dont send to local storage
+  // if (deletedVideos) {
+  //   localStorage.setItem("deletedVideos", JSON.stringify(deletedVideos));
+  // }
+  // localStorage.setItem("playlist", JSON.stringify(currentPlaylist));
 };
 
 savePlaylist.addEventListener("click", async () => {
