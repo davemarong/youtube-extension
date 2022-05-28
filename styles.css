@@ -14,10 +14,14 @@ body {
   box-shadow: 0 0 3px;
   margin: 10px;
   cursor: pointer;
+  transition: all 0.3s;
 }
 .button:hover {
-  background-color: rgb(55, 153, 132);
+  text-decoration: underline;
 }
 .button:active {
-  background-color: rgb(39, 111, 95);
+  background-color: rgb(55, 153, 132);
+}
+.button_active {
+  background-color: rgb(55, 153, 132);
 }

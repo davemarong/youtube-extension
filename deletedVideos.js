@@ -17,6 +17,16 @@ const toggleDeletedVideos = () => {
       }
     });
   }
+  toggleButtonColor();
+};
+
+const toggleButtonColor = () => {
+  if (deletedVideos_button.className.includes("button_active")) {
+    deletedVideos_button.classList = "button deletedVideos_button";
+  } else {
+    deletedVideos_button.classList =
+      "button deletedVideos_button button_active";
+  }
 };
 
 deletedVideos_button.addEventListener("click", toggleDeletedVideos);
