@@ -9,28 +9,24 @@
         <div class="sidebar">
           <div class="logo"><img src="./images/logo.svg" height="75" /></div>
           <div class="nav">
-            <div id="savePlaylist" class="button savePlaylist">
-              <label class="navItem">
-                <input type="radio" name="nav" />
+            <div class="savePlaylist">
+              <label class="navItem savePlaylist">
                 <p>Find playlist from this youtube page</p>
               </label>
             </div>
-            <div class="button deletedVideos_button">
-              <label class="navItem">
-                <input type="radio" name="nav" />
-                <p>See deleted videos</p>
+            <div class="">
+              <label class="navItem deletedVideos">
+                <p>Show deleted videos</p>
               </label>
             </div>
             <div>
               <label class="navItem">
-                <input type="radio" name="nav" />
-                <p>Show my saved playlist</p>
+                <p>Show saved playlist</p>
               </label>
             </div>
             <div>
               <label class="navItem">
-                <input type="radio" name="nav" />
-                <p>Empty my deleted videos list</p>
+                <p>Empty deleted videos list</p>
               </label>
             </div>
           </div>
@@ -40,14 +36,42 @@
         <div class="headline">
           <h1>Youtube - Save deleted video titles</h1>
         </div>
-        <div class="content">
-          <ul class="deletedVideos_list"></ul>
-          <div class="message"></div>
+        <div class="main_content">
+          <div class="savePlaylist_confirmation">
+            <h2>We found this playlist:</h2>
+            <p>Title of playlist</p>
+            <ul>
+              <li>
+                Title idfdl j skf hjg j hjf jh fhaf l j skf hjg j hjf jh fhaf l
+                j skf hjg j hjf jh fhaf j a
+              </li>
+              <li>Title idfdl j skf hjg j hjf jh fhaf j a</li>
+              <li>Title idfdl j skf hjg j hjf jh fhaf j a</li>
+            </ul>
+            <p>Is this the correct playlist?</p>
+            <button class="confirmation_button">Yes</button>
+            <button>No</button>
+          </div>
         </div>
       </div>
     </div>
-
-    <script src="savePlaylist.js"></script>
-    <script src="deletedVideos.js"></script>
+    <script src="savePlaylist.js" type="module"></script>
+    <script src="deletedVideos.js" type="module"></script>
   </body>
 </html>
+
+<!-- <div class="savePlaylist_confirmation">
+  <h2>We found this playlist:</h2>
+  <p>Title of playlist</p>
+  <ul>
+    <li>
+      Title idfdl j skf hjg j hjf jh fhaf l j skf hjg j hjf jh fhaf l
+      j skf hjg j hjf jh fhaf j a
+    </li>
+    <li>Title idfdl j skf hjg j hjf jh fhaf j a</li>
+    <li>Title idfdl j skf hjg j hjf jh fhaf j a</li>
+  </ul>
+  <p>Is this the correct playlist?</p>
+  <button>Yes</button>
+  <button>No</button>
+</div> -->

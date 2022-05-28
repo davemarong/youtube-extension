@@ -1,15 +1,16 @@
-let deletedVideos_list = document.querySelector(".deletedVideos_list");
-let deletedVideos_button = document.querySelector(".deletedVideos_button");
+let content = document.querySelector(".main_content");
+let deletedVideos_button = document.querySelector(".deletedVideos");
 
 const toggleDeletedVideos = () => {
-  if (deletedVideos_list.innerHTML) {
-    deletedVideos_list.innerHTML = "";
+  console.log("start");
+  if (content.innerHTML) {
+    content.innerHTML = "";
   } else {
     chrome.storage.sync.get("data", ({ data }) => {
       const { deletedVideos } = data;
       console.log("from delete", deletedVideos);
       for (let i = 0; i < deletedVideos.length; i++) {
-        deletedVideos_list.innerHTML += `
+        content.innerHTML += `
               <li>
               ${deletedVideos[i]}
               </li>
@@ -21,11 +22,11 @@ const toggleDeletedVideos = () => {
 };
 
 const toggleButtonColor = () => {
-  if (deletedVideos_button.className.includes("button_active")) {
-    deletedVideos_button.classList = "button deletedVideos_button";
+  console.log("dude");
+  if (deletedVideos_button.classList.contains("active")) {
+    deletedVideos_button.classList.remove("active");
   } else {
-    deletedVideos_button.classList =
-      "button deletedVideos_button button_active";
+    deletedVideos_button.classList.add("active");
   }
 };
 
