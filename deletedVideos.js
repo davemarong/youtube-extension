@@ -1,9 +1,9 @@
 import { main_content } from "./globalVariables.js";
 import { updateMainContentWithLoop, changeHeadline } from "./utils.js";
 
-let deletedVideos_button = document.querySelector(".deletedVideos");
+let deletedVideos_link = document.querySelector(".deletedVideos_link");
 
-deletedVideos_button.addEventListener("click", () => {
+deletedVideos_link.addEventListener("click", () => {
   changeHeadline("Show deleted videos");
   updateMainContentWithLoop(
     main_content,

@@ -18,7 +18,8 @@ body {
 /* HEADLINE */
 .headline {
   text-align: center;
-  padding: 0 10px;
+  padding: 20px;
+  margin: 0;
   border-bottom: 1px solid #b8b8b8;
 }
 
@@ -49,9 +50,31 @@ body {
 }
 
 /* CONTENT */
-.content {
+.main_content {
+  padding: 20px;
 }
 .deletedVideos_list {
 }
 .message {
+}
+
+.savePlaylist_list {
+  height: 200px;
+  overflow-y: scroll;
+  border: 1px solid #a6a6a6;
+  border-radius: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 20px;
+}
+.savePlaylist_list li {
+  padding: 15px;
+  border-bottom: 1px solid grey;
+}
+.savePlaylist_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.savePlaylist_button {
 }

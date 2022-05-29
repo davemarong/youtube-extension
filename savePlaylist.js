@@ -1,16 +1,16 @@
 // imports
-import { savePlaylist_confirmation } from "./htmlElements.js";
+import { savePlaylist_html } from "./htmlElements.js";
 import { main_content } from "./globalVariables.js";
 import {
   getCurrentPlaylist,
   injectFunctionToWebsite,
-  createPlaylistConfirmationHtml,
+  createPlaylistConfirmHtml,
   handlePlaylist,
   changeHeadline,
 } from "./utils.js";
 
-let savePlaylist_button = document.querySelector(".savePlaylist");
-let confirmation_button;
+let savePlaylist_link = document.querySelector(".savePlaylist_link");
+let savePlaylist_button;
 
 // The script picks up on every video on youtube. Fix that bro. A more specific selector goes a long way
 const getPlaylistAndPassMessage = () => {
@@ -25,15 +25,15 @@ const getPlaylistAndPassMessage = () => {
 chrome.runtime.onMessage.addListener((request) => {
   console.log(request.playlist);
   let savePlaylist_list = document.querySelector(".savePlaylist_list");
-  createPlaylistConfirmationHtml(savePlaylist_list, request.playlist);
+  createPlaylistConfirmHtml(savePlaylist_list, request.playlist);
 });
 
 const updateContent = () => {
-  main_content.innerHTML = savePlaylist_confirmation;
+  main_content.innerHTML = savePlaylist_html;
   changeHeadline("Find playlist from this youtube page");
-  confirmation_button = document.querySelector(".confirmation_button");
-  injectFunctionToWebsite(confirmation_button, handlePlaylist);
+  savePlaylist_button = document.querySelector(".savePlaylist_button");
+  injectFunctionToWebsite(savePlaylist_button, handlePlaylist);
 };
 
-injectFunctionToWebsite(savePlaylist_button, getPlaylistAndPassMessage);
-savePlaylist_button.addEventListener("click", updateContent);
+injectFunctionToWebsite(savePlaylist_link, getPlaylistAndPassMessage);
+savePlaylist_link.addEventListener("click", updateContent);
