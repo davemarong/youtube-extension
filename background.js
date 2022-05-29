@@ -3,6 +3,6 @@ let data = {
   deletedVideos: [],
 };
 chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.sync.set({ data });
+  chrome.storage.local.set({ data });
   console.log("Default playlist and deletedVideos is created");
 });
