@@ -1,12 +1,16 @@
-export const updateMainContentWithLoop = (element, datatype) => {
+export const updateMainContentWithLoop = (element, datatype, messageType) => {
   element.innerHTML = "";
   chrome.storage.local.get("data", ({ data }) => {
-    for (let i = 0; i < data[datatype].length; i++) {
-      element.innerHTML += `
-                <li>
-                ${data[datatype][i]}
-                </li>
-                `;
+    if (data[datatype].length > 0) {
+      for (let i = 0; i < data[datatype].length; i++) {
+        element.innerHTML += `
+        <li>
+        ${data[datatype][i]}
+        </li>
+        `;
+      }
+    } else {
+      element.innerHTML = `Your ${messageType} is empty`;
     }
   });
 };
@@ -31,12 +35,16 @@ export const getCurrentPlaylist = () => {
 // Create the html that will confirm if the playlist shown is the right one
 export const createPlaylistConfirmationHtml = (element, playlist) => {
   element.innerHTML = ``;
-  for (let i = 0; i < playlist.length; i++) {
-    element.innerHTML += `
-    <li>
-        ${playlist[i]}
-    </li>
-    `;
+  if (playlist.length > 0) {
+    for (let i = 0; i < playlist.length; i++) {
+      element.innerHTML += `
+      <li>
+      ${playlist[i]}
+      </li>
+      `;
+    }
+  } else {
+    element.innerHTML = `We could not find any playlist`;
   }
 };
 
@@ -77,4 +85,10 @@ export const handlePlaylist = () => {
 // Insert html into dom
 export const insertHtmlToDom = (element, html) => {
   element.innerHTML = html;
+};
+
+// Change header title
+export const changeHeadline = (text) => {
+  let headline = document.querySelector(".headline");
+  headline.textContent = text;
 };
