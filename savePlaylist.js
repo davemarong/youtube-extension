@@ -1,8 +1,38 @@
+// imports
 import { savePlaylist_confirmation } from "./htmlElements.js";
 import { main_content } from "./globalVariables.js";
+import { getCurrentPlaylist, injectFunctionToWebsite } from "./utils.js";
 
 let savePlaylist_button = document.querySelector(".savePlaylist");
 let confirmation_button;
+
+const createPlaylistConfirmationHtml = (element, playlist) => {
+  element.innerHTML = ``;
+
+  for (let i = 0; i < playlist.length; i++) {
+    element.innerHTML += `
+    <li>
+        ${playlist[i]}
+    </li>
+    `;
+  }
+};
+
+// The script picks up on every video on youtube. Fix that bro. A more specific selector goes a long way
+const getPlaylistAndPassMessage = () => {
+  const currentPlaylist = [...document.querySelectorAll("#meta h3 a")].map(
+    (item) => {
+      return item.title;
+    }
+  );
+  chrome.runtime.sendMessage({ playlist: currentPlaylist });
+};
+
+chrome.runtime.onMessage.addListener((request) => {
+  console.log(request.playlist);
+  let savePlaylist_list = document.querySelector(".savePlaylist_list");
+  createPlaylistConfirmationHtml(savePlaylist_list, request.playlist);
+});
 
 const updateContent = () => {
   main_content.innerHTML = savePlaylist_confirmation;
@@ -10,15 +40,7 @@ const updateContent = () => {
   injectFunctionToWebsite(confirmation_button, handlePlaylist);
 };
 
-const injectFunctionToWebsite = (element, func) => {
-  element.addEventListener("click", async () => {
-    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      function: func,
-    });
-  });
-};
+injectFunctionToWebsite(savePlaylist_button, getPlaylistAndPassMessage);
 savePlaylist_button.addEventListener("click", updateContent);
 
 const handlePlaylist = () => {
