@@ -1,4 +1,4 @@
-import { insertHtmlToDom, changeHeadline } from "./utils.js";
+import { insertHtmlToDom, changeHeadline, popupAlert } from "./utils.js";
 import { main_content } from "./globalVariables.js";
 import { emptyDeletedVideos_html } from "./htmlElements.js";
 
@@ -12,11 +12,12 @@ emptyDeletedVideos_link.addEventListener("click", () => {
   let emptyDeletedVideos_confirm = document.querySelector(
     ".emptyDeletedVideos_confirm"
   );
-  emptyDeletedVideos_confirm.addEventListener("click", emptyDeletedVideosList);
+  emptyDeletedVideos_confirm.addEventListener("click", () => {
+    emptyDeletedVideosList();
+    popupAlert("Your 'deleted video list' has been deleted");
+  });
 });
 const emptyDeletedVideosList = () => {
-  //
-  //
   //See if you can change only the deletedVideos property directly
   chrome.storage.local.get("data", ({ data }) => {
     const updatedData = {

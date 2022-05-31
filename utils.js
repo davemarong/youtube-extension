@@ -1,3 +1,6 @@
+import { searchErrorMessage_html } from "./htmlElements.js";
+
+// Update the "mainContent" by looping and displaying the html
 export const updateMainContentWithLoop = (element, datatype, messageType) => {
   element.innerHTML = "";
   chrome.storage.local.get("data", ({ data }) => {
@@ -12,11 +15,12 @@ export const updateMainContentWithLoop = (element, datatype, messageType) => {
       element.innerHTML =
         `<ul class="savePlaylist_list">` + element.innerHTML + `</ul>`;
     } else {
-      element.innerHTML = `Your ${messageType} is empty`;
+      element.innerHTML = `<div class="main_content-error">Your ${messageType} is empty</div>`;
     }
   });
 };
 
+// Injecting a function into the webpage. This function then has access to the webpage dom.
 export const injectFunctionToWebsite = (element, func) => {
   element.addEventListener("click", async () => {
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -35,7 +39,11 @@ export const getCurrentPlaylist = () => {
 };
 
 // Create the html that will confirm if the playlist shown is the right one
-export const createPlaylistConfirmHtml = (element, playlist) => {
+export const createPlaylistConfirmHtml = (
+  element,
+  playlist,
+  elementContainer
+) => {
   element.innerHTML = ``;
   if (playlist.length > 0) {
     for (let i = 0; i < playlist.length; i++) {
@@ -46,8 +54,13 @@ export const createPlaylistConfirmHtml = (element, playlist) => {
       `;
     }
   } else {
-    element.textContent = `We could not find any playlist`;
+    displayErrorMessage(elementContainer, searchErrorMessage_html);
   }
+};
+
+// Display an error message
+const displayErrorMessage = (element, message) => {
+  element.innerHTML = message;
 };
 
 // Content script: Find current playlist from youtube, compare and find deleted videos and store data in chrome storage
@@ -71,17 +84,11 @@ export const handlePlaylist = () => {
     // Save the newly created deletedVideos and playlist
     chrome.storage.local.set({
       data: {
-        playlist: [...currentPlaylist, "dude"],
+        playlist: currentPlaylist,
         deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
       },
     });
   });
-
-  if (currentPlaylist.length > 0) {
-    alert("Playlist saved");
-  } else {
-    alert("Playlist not found");
-  }
 };
 
 // Insert html into dom
@@ -93,4 +100,19 @@ export const insertHtmlToDom = (element, html) => {
 export const changeHeadline = (text) => {
   let headline = document.querySelector(".headline");
   headline.textContent = text;
+};
+
+// Closes the popup
+export const clearPopup = () => {
+  let popup = document.getElementById("myPopup");
+  popup.textContent = "";
+  popup.classList.remove("show");
+};
+
+// When the user clicks on <div>, open the popup
+export const popupAlert = (message) => {
+  let popup = document.getElementById("myPopup");
+  popup.textContent = message;
+  popup.classList.add("show");
+  setTimeout(clearPopup, 3000);
 };
