@@ -1,5 +1,3 @@
-A chrome extension created with HTML, CSS and Javascript.
-
 # Save deleted youtube video titles - Chrome extension
 
 > This extension will save the titles of youtube videos that have been deleted, so you can easily add them back.
@@ -28,9 +26,9 @@ A chrome extension created with HTML, CSS and Javascript.
 
 ## Technologies Used
 
-- HTML - version 5
-- CSS - version 3
-- JavaScript - version ES2015
+- HTML 5
+- CSS 3
+- JavaScript ES2015
 
 ## Features
 
