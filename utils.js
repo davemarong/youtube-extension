@@ -9,14 +9,21 @@ export const updateMainContentWithLoop = (element, datatype) => {
                 `;
     }
   });
-  // toggleButtonColor();
 };
 
-// const toggleButtonColor = () => {
-//   console.log("dude");
-//   if (deletedVideos_button.classList.contains("active")) {
-//     deletedVideos_button.classList.remove("active");
-//   } else {
-//     deletedVideos_button.classList.add("active");
-//   }
-// };
+export const injectFunctionToWebsite = (element, func) => {
+  element.addEventListener("click", async () => {
+    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      function: func,
+    });
+  });
+};
+
+// Get current playlist from Youtube
+export const getCurrentPlaylist = () => {
+  return [...document.querySelectorAll("#meta h3 a")].map((item) => {
+    return item.title;
+  });
+};
