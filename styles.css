@@ -37,7 +37,6 @@ body {
   background: #515ffd;
 }
 
-/* #FF6767 - #D34040 */
 /* SIDEBAR */
 .sidebar {
 }
@@ -57,7 +56,6 @@ body {
   align-items: center;
   gap: 10px;
   padding: 0px 15px;
-  /* background-color: transparent; */
   transition: all 0.3s;
 }
 .nav_item_icon {
@@ -73,13 +71,16 @@ body {
   border-radius: 5px;
 }
 
-/* CONTENT */
+/* MAIN_CONTENT */
 .main_content {
   padding: 20px;
 }
-.deletedVideos_list {
-}
-.message {
+.main_content-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .savePlaylist_list {
@@ -107,4 +108,66 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  bottom: 10px;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

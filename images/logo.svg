@@ -1,17 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="134" height="134" viewBox="0 0 134 134">
-  <g id="Group_1" data-name="Group 1" transform="translate(-61 -31)">
-    <g id="Icon_feather-trash" data-name="Icon feather-trash" transform="translate(137.773 79)">
-      <path id="Path_1" data-name="Path 1" d="M4.5,9H38.927" transform="translate(-4.5 -1.35)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-      <path id="Path_2" data-name="Path 2" d="M34.276,10.65V37.427a3.825,3.825,0,0,1-3.825,3.825H11.325A3.825,3.825,0,0,1,7.5,37.427V10.65m5.738,0V6.825A3.825,3.825,0,0,1,17.063,3h7.65a3.825,3.825,0,0,1,3.825,3.825V10.65" transform="translate(-3.675 -3)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="62.76" height="53.299" viewBox="0 0 62.76 53.299">
+  <g id="Group_3" data-name="Group 3" transform="translate(-843.359 -247.701)">
+    <path id="Icon_awesome-trash-alt" data-name="Icon awesome-trash-alt" d="M2.25,32.625A3.375,3.375,0,0,0,5.625,36h20.25a3.375,3.375,0,0,0,3.375-3.375V9h-27Zm19.125-18a1.125,1.125,0,0,1,2.25,0v15.75a1.125,1.125,0,0,1-2.25,0Zm-6.75,0a1.125,1.125,0,0,1,2.25,0v15.75a1.125,1.125,0,0,1-2.25,0Zm-6.75,0a1.125,1.125,0,0,1,2.25,0v15.75a1.125,1.125,0,0,1-2.25,0Z" transform="translate(870 265)"/>
+    <path id="Icon_awesome-trash-alt-2" data-name="Icon awesome-trash-alt" d="M30.375,2.25H21.938L21.277.935A1.688,1.688,0,0,0,19.765,0H11.728a1.668,1.668,0,0,0-1.5.935L9.563,2.25H1.125A1.125,1.125,0,0,0,0,3.375v2.25A1.125,1.125,0,0,0,1.125,6.75h29.25A1.125,1.125,0,0,0,31.5,5.625V3.375A1.125,1.125,0,0,0,30.375,2.25Z" transform="matrix(0.695, 0.719, -0.719, 0.695, 884.237, 247.701)"/>
+    <g id="Icon_feather-youtube" data-name="Icon feather-youtube" transform="matrix(0.875, -0.485, 0.485, 0.875, 849.635, 275.895)">
+      <path id="Path_6" data-name="Path 6" d="M16.638,7.7A1.954,1.954,0,0,0,15.275,6.3,50.612,50.612,0,0,0,9.231,6a46.248,46.248,0,0,0-6.044.323A1.954,1.954,0,0,0,1.823,7.729,20.382,20.382,0,0,0,1.5,11.447a20.382,20.382,0,0,0,.323,3.746,1.954,1.954,0,0,0,1.363,1.349,46.248,46.248,0,0,0,6.044.323,46.248,46.248,0,0,0,6.044-.323,1.954,1.954,0,0,0,1.363-1.406,20.382,20.382,0,0,0,.323-3.69A20.381,20.381,0,0,0,16.638,7.7Z" transform="translate(0)" fill="#f91100" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path id="Path_7" data-name="Path 7" d="M14.625,17.316l4.041-2.3-4.041-2.3Z" transform="translate(-6.976 -3.571)" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
     </g>
-    <g id="Icon_feather-save" data-name="Icon feather-save" transform="translate(83.567 79)">
-      <path id="Path_3" data-name="Path 3" d="M38.5,42.752H8.75A4.25,4.25,0,0,1,4.5,38.5V8.75A4.25,4.25,0,0,1,8.75,4.5H32.126L42.752,15.126V38.5A4.25,4.25,0,0,1,38.5,42.752Z" transform="translate(-4.5 -4.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-      <path id="Path_4" data-name="Path 4" d="M31.751,36.5v-17H10.5v17" transform="translate(-2 1.751)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-      <path id="Path_5" data-name="Path 5" d="M10.5,4.5V15.126h17" transform="translate(-2 -4.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <g id="Icon_feather-youtube-2" data-name="Icon feather-youtube" transform="translate(837.778 299.188) rotate(-83)">
+      <path id="Path_6-2" data-name="Path 6" d="M16.638,7.7A1.954,1.954,0,0,0,15.275,6.3,50.612,50.612,0,0,0,9.231,6a46.248,46.248,0,0,0-6.044.323A1.954,1.954,0,0,0,1.823,7.729,20.382,20.382,0,0,0,1.5,11.447a20.382,20.382,0,0,0,.323,3.746,1.954,1.954,0,0,0,1.363,1.349,46.248,46.248,0,0,0,6.044.323,46.248,46.248,0,0,0,6.044-.323,1.954,1.954,0,0,0,1.363-1.406,20.382,20.382,0,0,0,.323-3.69A20.381,20.381,0,0,0,16.638,7.7Z" transform="translate(0)" fill="#f91100" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path id="Path_7-2" data-name="Path 7" d="M14.625,17.316l4.041-2.3-4.041-2.3Z" transform="translate(-6.976 -3.571)" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
     </g>
-    <g id="Rectangle_1" data-name="Rectangle 1" transform="translate(61 31)" fill="none" stroke="#707070" stroke-width="1">
-      <rect width="134" height="134" rx="12" stroke="none"/>
-      <rect x="0.5" y="0.5" width="133" height="133" rx="11.5" fill="none"/>
+    <g id="Icon_feather-youtube-3" data-name="Icon feather-youtube" transform="translate(855.02 282.986)">
+      <path id="Path_6-3" data-name="Path 6" d="M16.638,7.7A1.954,1.954,0,0,0,15.275,6.3,50.612,50.612,0,0,0,9.231,6a46.248,46.248,0,0,0-6.044.323A1.954,1.954,0,0,0,1.823,7.729,20.382,20.382,0,0,0,1.5,11.447a20.382,20.382,0,0,0,.323,3.746,1.954,1.954,0,0,0,1.363,1.349,46.248,46.248,0,0,0,6.044.323,46.248,46.248,0,0,0,6.044-.323,1.954,1.954,0,0,0,1.363-1.406,20.382,20.382,0,0,0,.323-3.69A20.381,20.381,0,0,0,16.638,7.7Z" transform="translate(0)" fill="#f91100" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path id="Path_7-3" data-name="Path 7" d="M14.625,17.316l4.041-2.3-4.041-2.3Z" transform="translate(-6.976 -3.571)" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
     </g>
+    <path id="Path_8" data-name="Path 8" d="M0,0S9.624,13.767,17.423,14.491,31.2,2.894,31.2,2.894" transform="translate(892.085 274.208) rotate(175)" fill="none" stroke="#000" stroke-width="1"/>
+    <line id="Line_10" data-name="Line 10" x1="3.553" y1="7.633" transform="translate(857.5 266.5)" fill="none" stroke="#000" stroke-width="1"/>
+    <line id="Line_11" data-name="Line 11" x1="7.931" y2="4.456" transform="translate(860.569 269.5)" fill="none" stroke="#000" stroke-width="1"/>
   </g>
 </svg>
