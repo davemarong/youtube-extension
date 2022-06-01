@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -9,30 +15,27 @@
         <div class="sidebar">
           <!--  create a Homepage -->
           <div class="logo"><img src="./images/logo.svg" height="75" /></div>
-          <div class="nav">
-            <div class="savePlaylist">
+          <nav>
+            <ul class="nav">
               <!-- Change html structure to nav, ul and li -->
-              <!-- Change classnames to nav_savePlaylist or something -->
-              <label class="navItem savePlaylist_link">
+              <li class="nav_item savePlaylist_link">
+                <img class="nav_item_icon" src="./images/magnifyingBlue.svg" />
                 <p>Find playlist from this youtube page</p>
-              </label>
-            </div>
-            <div class="">
-              <label class="navItem deletedVideos_link">
+              </li>
+              <li class="nav_item deletedVideos_link">
+                <img class="nav_item_icon" src="./images/filmBlue.svg" />
                 <p>Show deleted videos</p>
-              </label>
-            </div>
-            <div>
-              <label class="navItem showSavedPlaylist_link">
+              </li>
+              <li class="nav_item showSavedPlaylist_link">
+                <img class="nav_item_icon" src="./images/listBlue.svg" />
                 <p>Show saved playlist</p>
-              </label>
-            </div>
-            <div>
-              <label class="navItem emptyDeletedVideos_link">
+              </li>
+              <li class="nav_item emptyDeletedVideos_link">
+                <img class="nav_item_icon" src="./images/trashBlue.svg" />
                 <p>Empty deleted videos list</p>
-              </label>
-            </div>
-          </div>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
       <div class="splitScreen_right">
