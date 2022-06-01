@@ -1,7 +1,7 @@
 import { savePlaylist_confirmation } from "./htmlElements.js";
+import { main_content } from "./globalVariables.js";
 
 let savePlaylist_button = document.querySelector(".savePlaylist");
-let main_content = document.querySelector(".main_content");
 let confirmation_button;
 
 const updateContent = () => {
