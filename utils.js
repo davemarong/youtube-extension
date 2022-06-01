@@ -9,6 +9,8 @@ export const updateMainContentWithLoop = (element, datatype, messageType) => {
         </li>
         `;
       }
+      element.innerHTML =
+        `<ul class="savePlaylist_list">` + element.innerHTML + `</ul>`;
     } else {
       element.innerHTML = `Your ${messageType} is empty`;
     }
@@ -33,7 +35,7 @@ export const getCurrentPlaylist = () => {
 };
 
 // Create the html that will confirm if the playlist shown is the right one
-export const createPlaylistConfirmationHtml = (element, playlist) => {
+export const createPlaylistConfirmHtml = (element, playlist) => {
   element.innerHTML = ``;
   if (playlist.length > 0) {
     for (let i = 0; i < playlist.length; i++) {
@@ -44,7 +46,7 @@ export const createPlaylistConfirmationHtml = (element, playlist) => {
       `;
     }
   } else {
-    element.innerHTML = `We could not find any playlist`;
+    element.textContent = `We could not find any playlist`;
   }
 };
 
