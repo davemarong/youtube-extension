@@ -1,13 +1,25 @@
-let savePlaylist_button = document.querySelector(".savePlaylist");
-let message = document.querySelector(".message");
+import { savePlaylist_confirmation } from "./htmlElements.js";
 
-savePlaylist.addEventListener("click", async () => {
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    function: handlePlaylist,
+let savePlaylist_button = document.querySelector(".savePlaylist");
+let main_content = document.querySelector(".main_content");
+let confirmation_button;
+
+const updateContent = () => {
+  main_content.innerHTML = savePlaylist_confirmation;
+  confirmation_button = document.querySelector(".confirmation_button");
+  injectFunctionToWebsite(confirmation_button, handlePlaylist);
+};
+
+const injectFunctionToWebsite = (element, func) => {
+  element.addEventListener("click", async () => {
+    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      function: func,
+    });
   });
-});
+};
+savePlaylist_button.addEventListener("click", updateContent);
 
 const handlePlaylist = () => {
   // Get current playlist from Youtube
