@@ -18,11 +18,7 @@
 
 ## General Information
 
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
-  If you have a playlist of songs on youtube, and some of the videos get taken down, all the information disappears. Unless you have a photographic memory, you will probably not remember the title of the song. That means you can't add the song again to your playlist. That is the reason why i created this extension. An easy and simple way to save the titles of those deleted videos.
+If you have a playlist of songs on youtube, and some of the videos get taken down, all the information disappears. Unless you have a photographic memory, you will probably not remember the title of the song. That means you can't add the song again to your playlist. That is the reason why i created this extension. An easy and simple way to save the titles of those deleted videos.
 
 ## Technologies Used
 
