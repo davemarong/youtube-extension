@@ -9,3 +9,10 @@ export const savePlaylist_confirmation = `
     <button>No</button>
   </div>
   `;
+
+export const emptyDeletedVideos_html = `
+  <div class="emptyDeletedVideos_content">
+    <h2>Do you want to empty your "deleted videos list"?</h2>
+    <button class="emptyDeletedVideos_confirm">Yes</button>
+  </div>
+`;
