@@ -6,6 +6,7 @@ import {
   injectFunctionToWebsite,
   createPlaylistConfirmationHtml,
   handlePlaylist,
+  changeHeadline,
 } from "./utils.js";
 
 let savePlaylist_button = document.querySelector(".savePlaylist");
@@ -29,6 +30,7 @@ chrome.runtime.onMessage.addListener((request) => {
 
 const updateContent = () => {
   main_content.innerHTML = savePlaylist_confirmation;
+  changeHeadline("Find playlist from this youtube page");
   confirmation_button = document.querySelector(".confirmation_button");
   injectFunctionToWebsite(confirmation_button, handlePlaylist);
 };
