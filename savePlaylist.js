@@ -20,11 +20,11 @@ const createPlaylistConfirmationHtml = (element, playlist) => {
 
 // The script picks up on every video on youtube. Fix that bro. A more specific selector goes a long way
 const getPlaylistAndPassMessage = () => {
-  const currentPlaylist = [...document.querySelectorAll("#meta h3 a")].map(
-    (item) => {
-      return item.title;
-    }
-  );
+  const currentPlaylist = [
+    ...document.querySelectorAll("[page-subtype='playlist'] #meta h3 a"),
+  ].map((item) => {
+    return item.title;
+  });
   chrome.runtime.sendMessage({ playlist: currentPlaylist });
 };
 
