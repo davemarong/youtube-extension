@@ -1,7 +1,7 @@
 {
-  "name": "Youtube - Save deleted titles",
-  "description": "This extension will save the names of all your deleted youtube videos, so you can add them back.",
-  "version": "1.0",
+  "name": "Youtube - Save deleted video titles",
+  "description": "This extension will save the video titles/names of all your deleted youtube videos from 1 playlist, so you can add them back.",
+  "version": "0.5",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
@@ -10,16 +10,16 @@
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "/images/miniLogo.png",
-      "32": "/images/miniLogo.png",
-      "48": "/images/miniLogo.png",
-      "128": "/images/miniLogo.png"
+      "16": "/images/logoBig.png",
+      "32": "/images/logoBig.png",
+      "48": "/images/logoBig.png",
+      "128": "/images/logoBig.png"
     }
   },
   "icons": {
-    "16": "/images/miniLogo.png",
-    "32": "/images/miniLogo.png",
-    "48": "/images/miniLogo.png",
-    "128": "/images/miniLogo.png"
+    "16": "/images/logoBig.png",
+    "32": "/images/logoBig.png",
+    "48": "/images/logoBig.png",
+    "128": "/images/logoBig.png"
   }
 }

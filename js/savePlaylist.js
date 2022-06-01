@@ -1,13 +1,13 @@
 // imports
-import { savePlaylist_html } from "./htmlElements.js";
-import { main_content } from "./globalVariables.js";
+import { savePlaylist_html } from "../utils/htmlElements.js";
+import { main_content } from "../utils/globalVariables.js";
 import {
   injectFunctionToWebsite,
   createPlaylistConfirmHtml,
   handlePlaylist,
   changeHeadline,
   popupAlert,
-} from "./utils.js";
+} from "../utils/utils.js";
 
 let savePlaylist_link = document.querySelector(".savePlaylist_link");
 let savePlaylist_button;
