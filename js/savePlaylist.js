@@ -1,4 +1,4 @@
-// imports
+// IMPORTS
 import { savePlaylist_html } from "../utils/htmlElements.js";
 import { main_content } from "../utils/globalVariables.js";
 import {
@@ -9,9 +9,11 @@ import {
   popupAlert,
 } from "../utils/utils.js";
 
+// QUERY SELECTORS
 let savePlaylist_link = document.querySelector(".savePlaylist_link");
 let savePlaylist_button;
 
+// FUNCTIONS
 // Find playlist on the youtube page and send it back to extension
 const getPlaylistAndPassMessage = () => {
   const currentPlaylist = [
@@ -21,12 +23,6 @@ const getPlaylistAndPassMessage = () => {
   });
   chrome.runtime.sendMessage({ playlist: currentPlaylist });
 };
-
-// A listener on the extension that receives the playlist from the page, creates html and displays it.
-chrome.runtime.onMessage.addListener((request) => {
-  let savePlaylist_list = document.querySelector(".savePlaylist_list");
-  createPlaylistConfirmHtml(savePlaylist_list, request.playlist, main_content);
-});
 
 // Update content on the findPlaylist page
 const updateContent = () => {
@@ -39,5 +35,13 @@ const updateContent = () => {
   });
 };
 
-injectFunctionToWebsite(savePlaylist_link, getPlaylistAndPassMessage);
+// EVENT LISTENERS
+// A listener on the extension that receives the playlist from the page, creates html and displays it.
+chrome.runtime.onMessage.addListener((request) => {
+  let savePlaylist_list = document.querySelector(".savePlaylist_list");
+  createPlaylistConfirmHtml(savePlaylist_list, request.playlist, main_content);
+});
+
 savePlaylist_link.addEventListener("click", updateContent);
+
+injectFunctionToWebsite(savePlaylist_link, getPlaylistAndPassMessage);
