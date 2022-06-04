@@ -1,5 +1,7 @@
 import { searchErrorMessage_html } from "./htmlElements.js";
+import { querySelectorString } from "./globalVariables.js";
 
+// FUNCTIONS UPDATING "MAIN_CONTENT"------------------------------------------------------------------>
 // Update the "mainContent" by looping and displaying the html
 export const updateMainContentWithLoop = (element, datatype, messageType) => {
   element.innerHTML = "";
@@ -17,24 +19,6 @@ export const updateMainContentWithLoop = (element, datatype, messageType) => {
     } else {
       element.innerHTML = `<div class="main_content-error">Your ${messageType} is empty</div>`;
     }
-  });
-};
-
-// Injecting a function into the webpage. This function then has access to the webpage dom.
-export const injectFunctionToWebsite = (element, func) => {
-  element.addEventListener("click", async () => {
-    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      function: func,
-    });
-  });
-};
-
-// Get current playlist from Youtube
-export const getCurrentPlaylist = () => {
-  return [...document.querySelectorAll("#meta h3 a")].map((item) => {
-    return item.title;
   });
 };
 
@@ -63,34 +47,6 @@ const displayErrorMessage = (element, message) => {
   element.innerHTML = message;
 };
 
-// Content script: Find current playlist from youtube, compare and find deleted videos and store data in chrome storage
-export const handlePlaylist = () => {
-  // Get current playlist from Youtube
-  const currentPlaylist = [
-    ...document.querySelectorAll("[page-subtype='playlist'] #meta h3 a"),
-  ].map((item) => {
-    return item.title;
-  });
-
-  // Fetch playlist and deletedVideos from Chrome storage
-  chrome.storage.local.get(["data"], ({ data }) => {
-    const { playlist, deletedVideos } = data;
-
-    // Filter out videos that are not found in oldPlaylist and currentPlaylist
-    const newlyDeletedVideos = playlist.filter((video) => {
-      return !currentPlaylist.includes(video);
-    });
-
-    // Save the newly created deletedVideos and playlist
-    chrome.storage.local.set({
-      data: {
-        playlist: currentPlaylist,
-        deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
-      },
-    });
-  });
-};
-
 // Insert html into dom
 export const insertHtmlToDom = (element, html) => {
   element.innerHTML = html;
@@ -115,4 +71,62 @@ export const popupAlert = (message) => {
   popup.textContent = message;
   popup.classList.add("show");
   setTimeout(clearPopup, 3000);
+};
+
+// FUNCTIONS INVOLVING THE CONTENT SCRIPT/BEING RUN ON THE ACTUAL WEBSITE---------------------------------------->
+// Injecting a function into the webpage. This function then has access to the webpage dom.
+export const injectFunctionToWebsite = (element, func) => {
+  element.addEventListener("click", async () => {
+    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      function: func,
+    });
+  });
+};
+
+// Content script: Find current playlist from youtube, compare and find deleted videos and store data in chrome storage
+export const handlePlaylist = () => {
+  // Get current playlist from Youtube
+  const currentPlaylist = [
+    ...document.querySelectorAll(querySelectorString),
+  ].map((item) => {
+    return item.title;
+  });
+
+  // Fetch playlist and deletedVideos from Chrome storage
+  chrome.storage.local.get(["data"], ({ data }) => {
+    const { playlist, deletedVideos } = data;
+
+    // Filter out videos that are not found in oldPlaylist and currentPlaylist
+    const newlyDeletedVideos = playlist.filter((video) => {
+      return !currentPlaylist.includes(video);
+    });
+
+    // Save the newly created deletedVideos and playlist
+    chrome.storage.local.set({
+      data: {
+        playlist: currentPlaylist,
+        deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
+      },
+    });
+  });
+};
+
+// Find playlist on the youtube page and send it back to extension
+export const getPlaylistAndPassMessage = () => {
+  const currentPlaylist = [
+    ...document.querySelectorAll(querySelectorString),
+  ].map((item) => {
+    return item.title;
+  });
+  chrome.runtime.sendMessage({ playlist: currentPlaylist });
+};
+
+// OTHER FUNCTIONS ------------------------------------------------------------------------------------------>
+// Get current playlist from Youtube
+export const getCurrentPlaylist = () => {
+  return [...document.querySelectorAll(querySelectorString)].map((item) => {
+    return item.title;
+  });
 };
