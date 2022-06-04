@@ -31,10 +31,12 @@ export const createPlaylistConfirmHtml = (
   if (playlist.length > 0) {
     for (let i = 0; i < playlist.length; i++) {
       element.innerHTML += `
-      <li>
-        <img height="50" src="${playlist[i].img}">
+      <a target="_blank" href=${playlist[i].url}>
+      <li data-ulr="${playlist[i].url}">
+        <img height="35" src="${playlist[i].img}">
         <p>${playlist[i].title}</p>
       </li>
+      </a>
       `;
     }
   } else {
@@ -127,7 +129,9 @@ export const getPlaylistAndPassMessage = () => {
   ].map((item) => {
     const title = item.querySelector("#meta h3 a");
     const img = item.querySelector("#img");
-    return { title: title.textContent.trim(), img: img.src, url: img.href };
+    const url = item.querySelector("#thumbnail #thumbnail");
+    console.log(url.href);
+    return { title: title.textContent.trim(), img: img.src, url: url.href };
   });
   console.log(currentPlaylist);
   chrome.runtime.sendMessage({ playlist: currentPlaylist });
