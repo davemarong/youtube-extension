@@ -32,7 +32,8 @@ export const createPlaylistConfirmHtml = (
     for (let i = 0; i < playlist.length; i++) {
       element.innerHTML += `
       <li>
-      ${playlist[i]}
+        <img height="50" src="${playlist[i].img}">
+        <p>${playlist[i].title}</p>
       </li>
       `;
     }
@@ -114,21 +115,21 @@ export const handlePlaylist = () => {
 
 // Find playlist on the youtube page and send it back to extension
 export const getPlaylistAndPassMessage = () => {
+  // const currentPlaylist = [
+  //   ...document.querySelectorAll("[page-subtype='playlist'] #meta h3 a"),
+  // ].map((item) => {
+  //   return item.title;
+  // });
   const currentPlaylist = [
-    ...document.querySelectorAll("[page-subtype='playlist'] #meta h3 a"),
-  ].map((item) => {
-    return item.title;
-  });
-  const imaAndTitle = [
     ...document.querySelectorAll(
       "[page-subtype='playlist'] ytd-playlist-video-renderer"
     ),
   ].map((item) => {
     const title = item.querySelector("#meta h3 a");
     const img = item.querySelector("#img");
-    return { title: title, img: img };
+    return { title: title.textContent.trim(), img: img.src, url: img.href };
   });
-
+  console.log(currentPlaylist);
   chrome.runtime.sendMessage({ playlist: currentPlaylist });
 };
 

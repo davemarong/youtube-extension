@@ -93,8 +93,14 @@ body {
   margin: 20px;
 }
 .savePlaylist_list li {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
   padding: 15px;
   border-bottom: 1px solid grey;
+}
+.savePlaylist_list li p {
+  padding: 10px;
 }
 .savePlaylist_container {
   display: flex;
