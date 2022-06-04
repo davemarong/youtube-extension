@@ -1,5 +1,4 @@
 import { searchErrorMessage_html } from "./htmlElements.js";
-import { querySelectorString } from "./globalVariables.js";
 
 // FUNCTIONS UPDATING "MAIN_CONTENT"------------------------------------------------------------------>
 // Update the "mainContent" by looping and displaying the html
@@ -89,7 +88,7 @@ export const injectFunctionToWebsite = (element, func) => {
 export const handlePlaylist = () => {
   // Get current playlist from Youtube
   const currentPlaylist = [
-    ...document.querySelectorAll(querySelectorString),
+    ...document.querySelectorAll("[page-subtype='playlist'] #meta h3 a"),
   ].map((item) => {
     return item.title;
   });
@@ -116,17 +115,27 @@ export const handlePlaylist = () => {
 // Find playlist on the youtube page and send it back to extension
 export const getPlaylistAndPassMessage = () => {
   const currentPlaylist = [
-    ...document.querySelectorAll(querySelectorString),
+    ...document.querySelectorAll("[page-subtype='playlist'] #meta h3 a"),
   ].map((item) => {
     return item.title;
   });
+  const imaAndTitle = [
+    ...document.querySelectorAll(
+      "[page-subtype='playlist'] ytd-playlist-video-renderer"
+    ),
+  ].map((item) => {
+    const title = item.querySelector("#meta h3 a");
+    const img = item.querySelector("#img");
+    return { title: title, img: img };
+  });
+
   chrome.runtime.sendMessage({ playlist: currentPlaylist });
 };
 
 // OTHER FUNCTIONS ------------------------------------------------------------------------------------------>
 // Get current playlist from Youtube
 export const getCurrentPlaylist = () => {
-  return [...document.querySelectorAll(querySelectorString)].map((item) => {
+  return [...document.querySelectorAll("#meta h3 a")].map((item) => {
     return item.title;
   });
 };
