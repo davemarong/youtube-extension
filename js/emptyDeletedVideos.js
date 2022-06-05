@@ -10,7 +10,7 @@ let emptyDeletedVideos_link = document.querySelector(
 
 // EVENT LISTENERS
 emptyDeletedVideos_link.addEventListener("click", () => {
-  changeHeadline("Empty 'deleted videos list'");
+  changeHeadline("Empty 'deleted videos'");
   insertHtmlToDom(main_content, emptyDeletedVideos_html);
 
   // Add eventListener to the newly created html
@@ -19,7 +19,7 @@ emptyDeletedVideos_link.addEventListener("click", () => {
   );
   emptyDeletedVideos_confirm.addEventListener("click", () => {
     emptyDeletedVideosList();
-    popupAlert("Your 'deleted video list' has been deleted");
+    popupAlert("Your 'deleted videos' has been deleted");
   });
 });
 

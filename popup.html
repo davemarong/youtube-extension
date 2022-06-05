@@ -11,36 +11,32 @@
   </head>
   <body>
     <div class="splitScreen">
-      <div class="splitScreen_left">
-        <div class="sidebar">
-          <!--  create a Homepage -->
-          <div class="logo"><img src="./images/logo.svg" height="75" /></div>
-          <nav>
-            <ul class="nav">
-              <li class="nav_item savePlaylist_link">
-                <img class="nav_item_icon" src="./images/magnifyingBlue.svg" />
-                <p>Find playlist from this youtube page</p>
-              </li>
-              <li class="nav_item deletedVideos_link">
-                <img class="nav_item_icon" src="./images/filmBlue.svg" />
-                <p>Show deleted videos</p>
-              </li>
-              <li class="nav_item showSavedPlaylist_link">
-                <img class="nav_item_icon" src="./images/listBlue.svg" />
-                <p>Show saved playlist</p>
-              </li>
-              <li class="nav_item emptyDeletedVideos_link">
-                <img class="nav_item_icon" src="./images/trashBlue.svg" />
-                <p>Empty deleted videos list</p>
-              </li>
-            </ul>
-          </nav>
-        </div>
+      <div class="header">
+        <!--  create a Homepage -->
+        <div class="logo"><img src="./images/logo.svg" height="75" /></div>
+        <nav>
+          <ul class="nav">
+            <li class="nav_item savePlaylist_link">
+              <img class="nav_item_icon" src="./images/magnifyingBlue.svg" />
+              <p>Find playlist from this page</p>
+            </li>
+            <li class="nav_item deletedVideos_link">
+              <img class="nav_item_icon" src="./images/filmBlue.svg" />
+              <p>Show deleted videos</p>
+            </li>
+            <li class="nav_item showSavedPlaylist_link">
+              <img class="nav_item_icon" src="./images/listBlue.svg" />
+              <p>Show saved playlist</p>
+            </li>
+            <li class="nav_item emptyDeletedVideos_link">
+              <img class="nav_item_icon" src="./images/trashBlue.svg" />
+              <p>Empty deleted videos</p>
+            </li>
+          </ul>
+        </nav>
       </div>
-      <div class="splitScreen_right">
-        <h1 class="headline">Youtube - Save deleted video titles</h1>
-        <div class="main_content"></div>
-      </div>
+      <h1 class="headline">Youtube - Save deleted video titles</h1>
+      <div class="main_content"></div>
     </div>
     <script src="./js/savePlaylist.js" type="module"></script>
     <script src="./js/deletedVideos.js" type="module"></script>
