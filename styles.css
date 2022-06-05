@@ -8,20 +8,19 @@ body {
 /* SPLITSCREEN */
 .splitScreen {
   display: flex;
+  flex-wrap: wrap;
 }
 .splitScreen_left {
-  flex: 1;
   border-right: 1px solid #b8b8b8;
 }
 .splitScreen_right {
-  flex: 2;
 }
 /* HEADLINE */
 .headline {
   text-align: center;
   padding: 20px;
-  margin: 0;
-  border-bottom: 1px solid #b8b8b8;
+  margin: auto;
+  width: 100%;
 }
 
 /* BUTTON */
@@ -37,8 +36,11 @@ body {
   background: #515ffd;
 }
 
-/* SIDEBAR */
-.sidebar {
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 5px;
 }
 .logo {
   padding: 15px 27px;
@@ -47,13 +49,14 @@ body {
 /*---- Nav */
 .nav {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
 }
 .nav_item {
   display: flex;
   align-items: center;
+  flex: 40%;
   gap: 10px;
   padding: 0px 15px;
   transition: all 0.3s;
@@ -73,7 +76,8 @@ body {
 
 /* MAIN_CONTENT */
 .main_content {
-  padding: 20px;
+  /* padding: 20px; */
+  margin: auto;
 }
 .main_content-error {
   display: flex;
@@ -83,32 +87,37 @@ body {
   text-align: center;
 }
 
-.savePlaylist_list {
+.playlist_list_container {
+  display: flex;
+}
+.playlist_list {
   height: 200px;
   overflow-y: scroll;
   border: 1px solid #a6a6a6;
   border-radius: 5px;
+  /* box-shadow: 0 0 3px; */
   list-style: none;
   padding: 0;
   margin: 20px;
+  flex: 1;
 }
-.savePlaylist_list a {
+.playlist_list a {
   text-decoration: none;
   color: #000000;
 }
-.savePlaylist_list li {
+.playlist_list li {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 0 10px;
   border-bottom: 1px solid grey;
 }
-.savePlaylist_list li:hover {
+.playlist_list li:hover {
   background-color: rgb(221, 219, 219);
   cursor: pointer;
   border-radius: 5px;
 }
-.savePlaylist_list li p {
-  padding: 10px;
+.playlist_list li p {
+  padding: 5px 10px;
 }
 .savePlaylist_container {
   display: flex;
@@ -116,6 +125,19 @@ body {
   align-items: center;
 }
 
+.oldPlaylist,
+.newPlaylist {
+  margin: 0;
+  border-radius: 0;
+}
+.oldPlaylist_container,
+.newPlaylist_container {
+  flex: 1;
+  text-align: center;
+}
+/* showSavedPlaylist */
+.showSavedPlaylist_list {
+}
 /* EmptyDeletedVideos */
 .emptyDeletedVideos_container {
   display: flex;

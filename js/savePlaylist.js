@@ -1,5 +1,5 @@
 // IMPORTS
-import { savePlaylist_html } from "../utils/htmlElements.js";
+import { savePlaylist_html69 } from "../utils/htmlElements.js";
 import { main_content } from "../utils/globalVariables.js";
 import {
   injectFunctionToWebsite,
@@ -18,13 +18,15 @@ let savePlaylist_button;
 // EVENT LISTENERS
 // A listener on the extension that receives the playlist from the page, creates html and displays it.
 chrome.runtime.onMessage.addListener((request) => {
-  let savePlaylist_list = document.querySelector(".savePlaylist_list");
-  createPlaylistConfirmHtml(savePlaylist_list, request.playlist, main_content);
+  createPlaylistConfirmHtml(".newPlaylist", request.playlist, main_content);
 });
 
 // Update the mainContent and add eventListener to the newly created html
 savePlaylist_link.addEventListener("click", () => {
-  insertHtmlToDom(main_content, savePlaylist_html);
+  insertHtmlToDom(main_content, savePlaylist_html69);
+  chrome.storage.local.get("data", ({ data }) => {
+    createPlaylistConfirmHtml(".oldPlaylist", data.playlist, main_content);
+  });
   changeHeadline("Find playlist from this youtube page");
   savePlaylist_button = document.querySelector(".savePlaylist_button");
   injectFunctionToWebsite(savePlaylist_button, handlePlaylist);

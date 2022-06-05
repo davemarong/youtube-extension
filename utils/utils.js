@@ -18,7 +18,9 @@ export const updateMainContentWithLoop = (element, datatype, messageType) => {
         `;
       }
       element.innerHTML =
-        `<ul class="savePlaylist_list">` + element.innerHTML + `</ul>`;
+        `<ul class="showSavedPlaylist_list playlist_list">` +
+        element.innerHTML +
+        `</ul>`;
     } else {
       element.innerHTML = `<div class="main_content-error">Your ${messageType} is empty</div>`;
     }
@@ -27,10 +29,11 @@ export const updateMainContentWithLoop = (element, datatype, messageType) => {
 
 // Create the html that will confirm if the playlist shown is the right one
 export const createPlaylistConfirmHtml = (
-  element,
+  elementSelector,
   playlist,
   elementContainer
 ) => {
+  let element = document.querySelector(elementSelector);
   element.innerHTML = ``;
   if (playlist.length > 0) {
     for (let i = 0; i < playlist.length; i++) {
@@ -104,7 +107,7 @@ export const handlePlaylist = () => {
     const url = item.querySelector("#thumbnail #thumbnail");
     return { title: title.textContent.trim(), img: img.src, url: url.href };
   });
-
+  console.log(currentPlaylist);
   // Fetch playlist and deletedVideos from Chrome storage
   chrome.storage.local.get(["data"], ({ data }) => {
     const { playlist, deletedVideos } = data;
@@ -120,6 +123,11 @@ export const handlePlaylist = () => {
     // Save the newly created deletedVideos and playlist
     chrome.storage.local.set({
       data: {
+        // NEXT LINE IS FOR TESTING THE DELETED VIDEOS SECTION
+        // playlist: [
+        //   ...currentPlaylist,
+        //   { title: "bro", url: "dude", img: "ja" },
+        // ],
         playlist: currentPlaylist,
         deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
       },
@@ -137,7 +145,6 @@ export const getPlaylistAndPassMessage = () => {
     const title = item.querySelector("#meta h3 a");
     const img = item.querySelector("#img");
     const url = item.querySelector("#thumbnail #thumbnail");
-    console.log(url.href);
     return { title: title.textContent.trim(), img: img.src, url: url.href };
   });
   chrome.runtime.sendMessage({ playlist: currentPlaylist });
