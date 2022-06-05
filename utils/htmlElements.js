@@ -1,17 +1,5 @@
 export const savePlaylist_html = `
   <div class="savePlaylist_container">
-    <ul class="savePlaylist_list"></ul>
-    <p>Is this the correct playlist?</p>
-    <div class="popup">
-      <span class="popuptext" id="myPopup">
-        Popup text...
-      </span>
-    </div>
-    <button class="savePlaylist_button button">Yes</button>
-  </div>
-`;
-export const savePlaylist_html69 = `
-  <div class="savePlaylist_container">
     <div class="playlist_list_container">
       <div class="oldPlaylist_container">
         <h2>Old playlist</h2>
@@ -22,7 +10,7 @@ export const savePlaylist_html69 = `
         <ul class="newPlaylist playlist_list"></ul>
       </div>
     </div>
-    <p>Is this the correct playlist?</p>
+    <p>Do you want to compare and sync these playlists?</p>
     <div class="popup">
       <span class="popuptext" id="myPopup">
         Popup text...
@@ -34,7 +22,7 @@ export const savePlaylist_html69 = `
 
 export const emptyDeletedVideos_html = `
   <div class="emptyDeletedVideos_container">
-    <p>Do you want to erase your "deleted videos list"?</p>
+    <p>Do you want to erase your "deleted videos"?</p>
     <div class="popup">
       <span class="popuptext" id="myPopup">
         Popup text...

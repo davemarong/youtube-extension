@@ -70,16 +70,16 @@ export const changeHeadline = (text) => {
 // Closes the popup
 export const clearPopup = () => {
   let popup = document.getElementById("myPopup");
-  popup.textContent = "";
+  popup.innerHTML = "";
   popup.classList.remove("show");
 };
 
 // When the user clicks on <div>, open the popup
 export const popupAlert = (message) => {
   let popup = document.getElementById("myPopup");
-  popup.textContent = message;
+  popup.innerHTML = message;
   popup.classList.add("show");
-  setTimeout(clearPopup, 3000);
+  setTimeout(clearPopup, 7000);
 };
 
 // FUNCTIONS INVOLVING THE CONTENT SCRIPT/BEING RUN ON THE ACTUAL WEBSITE---------------------------------------->
@@ -127,6 +127,8 @@ export const handlePlaylist = () => {
         // playlist: [
         //   ...currentPlaylist,
         //   { title: "bro", url: "dude", img: "ja" },
+        //   { title: "er", url: "dude", img: "ja" },
+        //   { title: "kul", url: "dude", img: "ja" },
         // ],
         playlist: currentPlaylist,
         deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
