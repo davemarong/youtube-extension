@@ -1,5 +1,3 @@
-import { searchErrorMessage_html } from "./htmlElements.js";
-
 // FUNCTIONS UPDATING "MAIN_CONTENT"------------------------------------------------------------------>
 // Update the "mainContent" by looping and displaying the html
 export const updateMainContentWithLoop = (element, datatype, messageType) => {
@@ -31,9 +29,10 @@ export const updateMainContentWithLoop = (element, datatype, messageType) => {
 export const createPlaylistConfirmHtml = (
   elementSelector,
   playlist,
-  elementContainer
+  errorMessage_html
 ) => {
   let element = document.querySelector(elementSelector);
+  console.log(element);
   element.innerHTML = ``;
   if (playlist.length > 0) {
     for (let i = 0; i < playlist.length; i++) {
@@ -47,7 +46,7 @@ export const createPlaylistConfirmHtml = (
       `;
     }
   } else {
-    displayErrorMessage(elementContainer, searchErrorMessage_html);
+    displayErrorMessage(element, errorMessage_html);
   }
 };
 
@@ -153,3 +152,20 @@ export const getPlaylistAndPassMessage = () => {
 };
 
 // OTHER FUNCTIONS ------------------------------------------------------------------------------------------>
+export const comparePlaylists = (selector1, selector2) => {
+  let oldPlaylist_element = document.querySelector(selector1);
+  let newPlaylist_element = document.querySelector(selector2);
+
+  const oldPlaylist = [...oldPlaylist_element.querySelectorAll("p")].map(
+    (video) => video.textContent
+  );
+  const newPlaylist = [...newPlaylist_element.querySelectorAll("p")].map(
+    (video) => video.textContent
+  );
+
+  const newlyDeletedVideos = oldPlaylist.filter(
+    (oldVideo) => !newPlaylist.find((currentVideo) => oldVideo === currentVideo)
+  );
+  console.log(newlyDeletedVideos);
+  return [newlyDeletedVideos.length, newlyDeletedVideos];
+};

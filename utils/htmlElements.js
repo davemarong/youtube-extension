@@ -32,8 +32,26 @@ export const emptyDeletedVideos_html = `
   </div>
 `;
 
-export const searchErrorMessage_html = `
+export const searchErrorMessage_newPlaylist = `
   <div class="main_content-error">
     Sadly, we could not find any playlist. Navigate to a youtube page with a playlist and then click "Find playlist from this youtube page" again.
   </div>
   `;
+export const searchErrorMessage_oldPlaylist = `
+  <div class="main_content-error">
+    You have no previously saved playlist. Press sync to start tracking your playlist.
+  </div>
+  `;
+export const popup_synced_message = (numberDeletedVideos, deletedVideos) =>
+  `
+  <div>
+  <p>
+  We found ${numberDeletedVideos} videos ${
+    deletedVideos.length > 0
+      ? ", these have been saved to your 'deleted videos' list."
+      : "."
+  }
+    </p>
+    <p>${deletedVideos}</p>
+    </div>
+    `;

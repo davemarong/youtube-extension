@@ -1,7 +1,7 @@
 {
   "name": "Deleted youtube videos",
   "description": "This extension will save the video titles/names of all your deleted youtube videos from 1 playlist, so you can add them back.",
-  "version": "0.5",
+  "version": "0.7.1",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
