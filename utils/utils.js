@@ -84,6 +84,7 @@ export const popupAlert = (message) => {
 // FUNCTIONS INVOLVING THE CONTENT SCRIPT/BEING RUN ON THE ACTUAL WEBSITE---------------------------------------->
 // Injecting a function into the webpage. This function then has access to the webpage dom.
 export const injectFunctionToWebsite = (element, func) => {
+  console.log("inject");
   element.addEventListener("click", async () => {
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     chrome.scripting.executeScript({
