@@ -1,6 +1,7 @@
 let data = {
   playlist: [],
   deletedVideos: [],
+  playlistId: "",
 };
 chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.local.set({ data });
@@ -16,7 +17,6 @@ const filter = {
 };
 
 chrome.webNavigation.onHistoryStateUpdated.addListener(async () => {
-  console.info("The user has loaded my favorite website!");
   chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
     const url = tabs[0].url;
     if (url.includes("PLVEFS9uzMyHYKBAklGQmv6m38WH")) {

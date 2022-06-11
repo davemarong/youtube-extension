@@ -110,7 +110,7 @@ export const handlePlaylist = () => {
   console.log(currentPlaylist);
   // Fetch playlist and deletedVideos from Chrome storage
   chrome.storage.local.get(["data"], ({ data }) => {
-    const { playlist, deletedVideos } = data;
+    const { playlist, deletedVideos, playlistId } = data;
 
     // Filter out videos that are not found in oldPlaylist and currentPlaylist
     const newlyDeletedVideos = playlist.filter(
@@ -132,6 +132,7 @@ export const handlePlaylist = () => {
         // ],
         playlist: currentPlaylist,
         deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
+        playlistId: playlistId,
       },
     });
   });
@@ -149,6 +150,11 @@ export const getPlaylistAndPassMessage = () => {
     const url = item.querySelector("#thumbnail #thumbnail");
     return { title: title.textContent.trim(), img: img.src, url: url.href };
   });
+  let text = "list=";
+  console.log(window.location.href);
+  let n = text.search(/playlist?list=PLVEFS9uzMyHYKBAklGQmv6m38WH_mG5eI/i);
+  console.log(n);
+
   chrome.runtime.sendMessage({ playlist: currentPlaylist });
 };
 

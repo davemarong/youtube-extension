@@ -21,6 +21,11 @@ import {
 let savePlaylist_link = document.querySelector(".savePlaylist_link");
 let savePlaylist_button;
 
+const addCLass = (className, selector) => {
+  const element = document.querySelector(selector);
+  element.classList.add(className);
+};
+
 // EVENT LISTENERS
 // A listener on the extension that receives the playlist from the page, creates html and displays it.
 chrome.runtime.onMessage.addListener((request) => {
@@ -29,6 +34,7 @@ chrome.runtime.onMessage.addListener((request) => {
     request.playlist,
     searchErrorMessage_newPlaylist
   );
+  addCLass("playlist_list", ".newPlaylist");
 });
 
 // Update the mainContent and add eventListener to the newly created html
@@ -40,6 +46,7 @@ savePlaylist_link.addEventListener("click", () => {
       data.playlist,
       searchErrorMessage_oldPlaylist
     );
+    addCLass("playlist_list", ".oldPlaylist");
   });
   changeHeadline("Find playlist from this page");
   savePlaylist_button = document.querySelector(".savePlaylist_button");

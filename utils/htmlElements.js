@@ -3,11 +3,41 @@ export const savePlaylist_html = `
     <div class="playlist_list_container">
       <div class="oldPlaylist_container">
         <h2>Old playlist</h2>
-        <ul class="oldPlaylist playlist_list"></ul>
+        <ul class="oldPlaylist">
+          <div class="loadingSpinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </ul>
       </div>
       <div class="newPlaylist_container">
         <h2>New playlist</h2>
-        <ul class="newPlaylist playlist_list"></ul>
+        <ul class="newPlaylist">
+          <div class="loadingSpinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </ul>
       </div>
     </div>
     <p>Do you want to compare and sync these playlists?</p>

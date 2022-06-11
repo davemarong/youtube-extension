@@ -136,6 +136,10 @@ body {
   flex: 1;
   text-align: center;
 }
+.oldPlaylist_loadingBar {
+}
+.newPlaylist_loadingBar {
+}
 /* showSavedPlaylist */
 .showSavedPlaylist_list {
 }
