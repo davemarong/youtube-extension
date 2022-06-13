@@ -9,7 +9,6 @@
     const title = item.querySelector("#meta h3 a");
     const img = item.querySelector("#img");
     const url = item.querySelector("#thumbnail #thumbnail");
-    console.log(img);
     return { title: title.textContent.trim(), img: img.src, url: url.href };
   });
 
@@ -18,6 +17,10 @@
   const url = window.location.href;
   const number = url.search(text);
   const currentPlaylistId = url.slice(number + 5, number + 5 + 34);
+
+  // Get day of month
+  const date = new Date();
+  const dayInMonth = date.getDate();
 
   // Fetch playlist and deletedVideos from Chrome storage
   chrome.storage.local.get(["data"], ({ data }) => {
@@ -64,6 +67,7 @@
         playlist: updatedCurrentPlaylist,
         deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
         playlistId: playlistId,
+        lastUpdate: dayInMonth,
       },
     });
   });

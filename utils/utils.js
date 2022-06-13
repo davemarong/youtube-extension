@@ -32,7 +32,6 @@ export const createPlaylistConfirmHtml = (
   errorMessage_html
 ) => {
   let element = document.querySelector(elementSelector);
-  console.log(element);
   element.innerHTML = ``;
   if (playlist.length > 0) {
     for (let i = 0; i < playlist.length; i++) {
@@ -113,6 +112,10 @@ export const handlePlaylist = () => {
   const number = url.search(text);
   const playlistId = url.slice(number + 5, number + 5 + 34);
 
+  // Get day of month
+  const date = new Date();
+  const dayInMonth = date.getDate();
+
   // Fetch playlist and deletedVideos from Chrome storage
   chrome.storage.local.get(["data"], ({ data }) => {
     const { playlist, deletedVideos } = data;
@@ -155,10 +158,10 @@ export const handlePlaylist = () => {
         playlist: updatedCurrentPlaylist,
         deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
         playlistId: playlistId,
+        lastUpdate: dayInMonth,
       },
     });
   });
-  console.log(playlistId);
 };
 
 // Find playlist on the youtube page and send it back to extension
