@@ -27,7 +27,7 @@
     let { playlist, deletedVideos, playlistId } = data;
 
     // Check if new playlist is the same as old playlist
-    // if (currentPlaylistId !== playlistId) return;
+    if (currentPlaylistId !== playlistId) return;
 
     // Filter out videos that are not found in oldPlaylist and currentPlaylist
     const newlyDeletedVideos = playlist.filter(

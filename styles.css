@@ -26,17 +26,27 @@ body {
 /* BUTTON */
 .button {
   background: #6a76ff;
-  width: 76px;
-  height: 24px;
+  width: 110px;
+  height: 34px;
   border: 0;
-  box-shadow: 0 0 3px;
+  box-shadow: 0 0 3px black;
   cursor: pointer;
   margin: 10px;
+  color: white;
+  font-size: 1.6rem;
 }
 .button:hover {
   background: #515ffd;
 }
-
+.savePlaylist_button_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.savePlaylist_button_icon {
+  height: 17px;
+  margin-left: 8px;
+}
 /* HEADER */
 .header {
   display: flex;
@@ -162,17 +172,17 @@ body {
 /* The actual popup (appears on top) */
 .popup .popuptext {
   visibility: hidden;
-  width: 160px;
+  width: 270px;
   background-color: #555;
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 8px 0;
+  padding: 8px;
   position: absolute;
   z-index: 1;
   bottom: 125%;
   left: 50%;
-  margin-left: -80px;
+  margin-left: -135px;
 }
 
 /* Popup arrow */

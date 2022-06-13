@@ -40,14 +40,22 @@ export const savePlaylist_html = `
         </ul>
       </div>
     </div>
+    <div class="savePlaylist_button_container">
+    </div>
+  </div>
+`;
+
+export const savePlaylist_button_html = `
     <p>Do you want to compare and sync these playlists?</p>
     <div class="popup">
       <span class="popuptext" id="myPopup">
         Popup text...
       </span>
     </div>
-    <button class="savePlaylist_button button">Yes</button>
-  </div>
+    <button class="savePlaylist_button button">
+      Sync
+      <img class="savePlaylist_button_icon" src="../images/sync.svg" />
+    </button>
 `;
 
 export const emptyDeletedVideos_html = `
@@ -76,7 +84,7 @@ export const popup_synced_message = (numberDeletedVideos, deletedVideos) =>
   `
   <div>
   <p>
-  We found ${numberDeletedVideos} videos ${
+  We found ${numberDeletedVideos} videos that had been removed ${
     deletedVideos.length > 0
       ? ", these have been saved to your 'deleted videos' list."
       : "."

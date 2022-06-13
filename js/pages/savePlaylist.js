@@ -4,6 +4,7 @@ import {
   popup_synced_message,
   searchErrorMessage_newPlaylist,
   searchErrorMessage_oldPlaylist,
+  savePlaylist_button_html,
 } from "../../utils/htmlElements.js";
 import { main_content } from "../../utils/globalVariables.js";
 import {
@@ -35,6 +36,19 @@ chrome.runtime.onMessage.addListener((request) => {
     searchErrorMessage_newPlaylist
   );
   addCLass("playlist_list", ".newPlaylist");
+  const savePlaylist_button_container = document.querySelector(
+    ".savePlaylist_button_container"
+  );
+  insertHtmlToDom(savePlaylist_button_container, savePlaylist_button_html);
+  savePlaylist_button = document.querySelector(".savePlaylist_button");
+  injectFunctionToWebsite(savePlaylist_button, handlePlaylist);
+  savePlaylist_button.addEventListener("click", () => {
+    const [numberDeletedVideos, deletedVideos] = comparePlaylists(
+      ".oldPlaylist",
+      ".newPlaylist"
+    );
+    popupAlert(popup_synced_message(numberDeletedVideos, deletedVideos));
+  });
 });
 
 // Update the mainContent and add eventListener to the newly created html
@@ -49,15 +63,6 @@ savePlaylist_link.addEventListener("click", () => {
     addCLass("playlist_list", ".oldPlaylist");
   });
   changeHeadline("Find playlist from this page");
-  savePlaylist_button = document.querySelector(".savePlaylist_button");
-  injectFunctionToWebsite(savePlaylist_button, handlePlaylist);
-  savePlaylist_button.addEventListener("click", () => {
-    const [numberDeletedVideos, deletedVideos] = comparePlaylists(
-      ".oldPlaylist",
-      ".newPlaylist"
-    );
-    popupAlert(popup_synced_message(numberDeletedVideos, deletedVideos));
-  });
 });
 
 // A functions thats adds an eventListener and upon activating injects as run code on the website

@@ -10,6 +10,6 @@ let showSavedPlaylist_link = document.querySelector(".showSavedPlaylist_link");
 
 // EVENT LISTENERS
 showSavedPlaylist_link.addEventListener("click", () => {
-  changeHeadline("Show saved playlist");
+  changeHeadline("My saved playlist");
   updateMainContentWithLoop(main_content, "playlist", "playlist");
 });
