@@ -1,6 +1,9 @@
 // IMPORTS
-import { main_content } from "../utils/globalVariables.js";
-import { updateMainContentWithLoop, changeHeadline } from "../utils/utils.js";
+import { main_content } from "../../utils/globalVariables.js";
+import {
+  updateMainContentWithLoop,
+  changeHeadline,
+} from "../../utils/utils.js";
 
 // QUERY SELECTORS
 let showSavedPlaylist_link = document.querySelector(".showSavedPlaylist_link");

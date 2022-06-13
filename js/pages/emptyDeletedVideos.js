@@ -1,7 +1,11 @@
 // IMPORT
-import { insertHtmlToDom, changeHeadline, popupAlert } from "../utils/utils.js";
-import { main_content } from "../utils/globalVariables.js";
-import { emptyDeletedVideos_html } from "../utils/htmlElements.js";
+import {
+  insertHtmlToDom,
+  changeHeadline,
+  popupAlert,
+} from "../../utils/utils.js";
+import { main_content } from "../../utils/globalVariables.js";
+import { emptyDeletedVideos_html } from "../../utils/htmlElements.js";
 
 // QUERY SELECTOR
 let emptyDeletedVideos_link = document.querySelector(

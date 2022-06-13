@@ -19,8 +19,17 @@ const filter = {
 chrome.webNavigation.onHistoryStateUpdated.addListener(async () => {
   chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
     const url = tabs[0].url;
+    console.log(tabs[0].id);
     if (url.includes("PLVEFS9uzMyHYKBAklGQmv6m38WH")) {
-      console.log("This is it bro");
+      chrome.scripting.executeScript(
+        {
+          target: { tabId: tabs[0].id },
+          files: ["./js/contentScripts/autoSyncPlaylist.js"],
+        },
+        (result) => {
+          console.log(result);
+        }
+      );
     } else {
       console.log("nope. not yet");
     }

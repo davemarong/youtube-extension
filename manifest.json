@@ -4,9 +4,13 @@
   "version": "0.7.1",
   "manifest_version": 3,
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "permissions": ["storage", "activeTab", "scripting","background","contextMenus","webNavigation","tabs"],
+  "host_permissions": [
+    "https://www.youtube.com/*"
+],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {

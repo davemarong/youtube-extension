@@ -129,13 +129,13 @@ export const handlePlaylist = () => {
     chrome.storage.local.set({
       data: {
         // NEXT LINE IS FOR TESTING THE DELETED VIDEOS SECTION
-        // playlist: [
-        //   ...currentPlaylist,
-        //   { title: "bro", url: "dude", img: "ja" },
-        //   { title: "er", url: "dude", img: "ja" },
-        //   { title: "kul", url: "dude", img: "ja" },
-        // ],
-        playlist: currentPlaylist,
+        playlist: [
+          ...currentPlaylist,
+          { title: "bro", url: "dude", img: "ja" },
+          { title: "er", url: "dude", img: "ja" },
+          { title: "kul", url: "dude", img: "ja" },
+        ],
+        // playlist: currentPlaylist,
         deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
         playlistId: playlistId,
       },

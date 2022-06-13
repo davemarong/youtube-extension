@@ -1,6 +1,9 @@
 // IMPORT
-import { main_content } from "../utils/globalVariables.js";
-import { updateMainContentWithLoop, changeHeadline } from "../utils/utils.js";
+import { main_content } from "../../utils/globalVariables.js";
+import {
+  updateMainContentWithLoop,
+  changeHeadline,
+} from "../../utils/utils.js";
 
 // QUERYSELECTOR
 let deletedVideos_link = document.querySelector(".deletedVideos_link");

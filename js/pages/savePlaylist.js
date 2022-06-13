@@ -4,8 +4,8 @@ import {
   popup_synced_message,
   searchErrorMessage_newPlaylist,
   searchErrorMessage_oldPlaylist,
-} from "../utils/htmlElements.js";
-import { main_content } from "../utils/globalVariables.js";
+} from "../../utils/htmlElements.js";
+import { main_content } from "../../utils/globalVariables.js";
 import {
   injectFunctionToWebsite,
   createPlaylistConfirmHtml,
@@ -15,7 +15,7 @@ import {
   insertHtmlToDom,
   getPlaylistAndPassMessage,
   comparePlaylists,
-} from "../utils/utils.js";
+} from "../../utils/utils.js";
 
 // QUERY SELECTORS
 let savePlaylist_link = document.querySelector(".savePlaylist_link");
