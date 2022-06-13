@@ -21,14 +21,17 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(async () => {
     const url = tabs[0].url;
     console.log(tabs[0].id);
     if (url.includes("PLVEFS9uzMyHYKBAklGQmv6m38WH")) {
-      chrome.scripting.executeScript(
-        {
-          target: { tabId: tabs[0].id },
-          files: ["./js/contentScripts/autoSyncPlaylist.js"],
-        },
-        (result) => {
-          console.log(result);
-        }
+      setTimeout(
+        chrome.scripting.executeScript(
+          {
+            target: { tabId: tabs[0].id },
+            files: ["./js/contentScripts/autoSyncPlaylist.js"],
+          },
+          (result) => {
+            console.log(result);
+          }
+        ),
+        3000
       );
     } else {
       console.log("nope. not yet");

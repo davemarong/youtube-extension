@@ -1,22 +1,23 @@
 // Content script: Find current playlist from youtube, compare and find deleted videos and store data in chrome storage without the user input
 {
   // Get current playlist from Youtube with titles, images and url's
-  let currentPlaylist = [
+  const currentPlaylist = [
     ...document.querySelectorAll(
       "[page-subtype='playlist'] ytd-playlist-video-renderer"
     ),
   ].map((item) => {
-    let title = item.querySelector("#meta h3 a");
-    let img = item.querySelector("#img");
-    let url = item.querySelector("#thumbnail #thumbnail");
+    const title = item.querySelector("#meta h3 a");
+    const img = item.querySelector("#img");
+    const url = item.querySelector("#thumbnail #thumbnail");
+    console.log(img);
     return { title: title.textContent.trim(), img: img.src, url: url.href };
   });
 
   // Find playlistId in the url
-  let text = "list=";
-  let url = window.location.href;
-  let number = url.search(text);
-  let currentPlaylistId = url.slice(number + 5, number + 5 + 34);
+  const text = "list=";
+  const url = window.location.href;
+  const number = url.search(text);
+  const currentPlaylistId = url.slice(number + 5, number + 5 + 34);
 
   // Fetch playlist and deletedVideos from Chrome storage
   chrome.storage.local.get(["data"], ({ data }) => {
@@ -26,24 +27,41 @@
     // if (currentPlaylistId !== playlistId) return;
 
     // Filter out videos that are not found in oldPlaylist and currentPlaylist
-    let newlyDeletedVideos = playlist.filter(
+    const newlyDeletedVideos = playlist.filter(
       (oldVideo) =>
         !currentPlaylist.find(
           (currentVideo) => oldVideo.title === currentVideo.title
         )
     );
 
+    // Get img-url from oldPlaylist if newPlaylist does not have
+    const updatedCurrentPlaylist = currentPlaylist.map((currentVideo) => {
+      // If img is present, return
+      if (currentVideo.img) return currentVideo;
+
+      // If image is not present, find image in old playlist and return that
+      const updatedVideo = playlist.find(
+        (oldVideo) => currentVideo.title === oldVideo.title
+      );
+
+      if (updatedVideo) {
+        return updatedVideo;
+      } else {
+        return currentVideo;
+      }
+    });
+
     // Save the newly created deletedVideos and playlist
     chrome.storage.local.set({
       data: {
         // NEXT LINE IS FOR TESTING THE DELETED VIDEOS SECTION
-        playlist: [
-          ...currentPlaylist,
-          { title: "bro", url: "dude", img: "ja" },
-          { title: "er", url: "dude", img: "ja" },
-          { title: "kul", url: "dude", img: "ja" },
-        ],
-        // playlist: currentPlaylist,
+        // playlist: [
+        //   ...currentPlaylist,
+        //   { title: "bro", url: "dude", img: "ja" },
+        //   { title: "er", url: "dude", img: "ja" },
+        //   { title: "kul", url: "dude", img: "ja" },
+        // ],
+        playlist: updatedCurrentPlaylist,
         deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
         playlistId: playlistId,
       },

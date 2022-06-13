@@ -125,17 +125,34 @@ export const handlePlaylist = () => {
         )
     );
 
+    // Get img-url from oldPlaylist if newPlaylist does not have
+    const updatedCurrentPlaylist = currentPlaylist.map((currentVideo) => {
+      // If img is present, return
+      if (currentVideo.img) return currentVideo;
+
+      // If image is not present, find image in old playlist and return that
+      const updatedVideo = playlist.find(
+        (oldVideo) => currentVideo.title === oldVideo.title
+      );
+
+      if (updatedVideo) {
+        return updatedVideo;
+      } else {
+        return currentVideo;
+      }
+    });
+
     // Save the newly created deletedVideos and playlist
     chrome.storage.local.set({
       data: {
         // NEXT LINE IS FOR TESTING THE DELETED VIDEOS SECTION
-        playlist: [
-          ...currentPlaylist,
-          { title: "bro", url: "dude", img: "ja" },
-          { title: "er", url: "dude", img: "ja" },
-          { title: "kul", url: "dude", img: "ja" },
-        ],
-        // playlist: currentPlaylist,
+        // playlist: [
+        //   ...currentPlaylist,
+        //   { title: "bro", url: "dude", img: "ja" },
+        //   { title: "er", url: "dude", img: "ja" },
+        //   { title: "kul", url: "dude", img: "ja" },
+        // ],
+        playlist: updatedCurrentPlaylist,
         deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
         playlistId: playlistId,
       },
@@ -146,7 +163,7 @@ export const handlePlaylist = () => {
 
 // Find playlist on the youtube page and send it back to extension
 export const getPlaylistAndPassMessage = () => {
-  const currentPlaylist = [
+  let currentPlaylist = [
     ...document.querySelectorAll(
       "[page-subtype='playlist'] ytd-playlist-video-renderer"
     ),
@@ -163,9 +180,29 @@ export const getPlaylistAndPassMessage = () => {
   const number = url.search(text);
   const playlistId = url.slice(number + 5, number + 5 + 34);
 
-  chrome.runtime.sendMessage({
-    playlist: currentPlaylist,
-    playlistId: playlistId,
+  // Get img-url from oldPlaylist if newPlaylist does not have
+  chrome.storage.local.get(["data"], ({ data }) => {
+    const updatedCurrentPlaylist = currentPlaylist.map((currentVideo) => {
+      // If img is present, return
+      if (currentVideo.img) return currentVideo;
+
+      // If image is not present, find image in old playlist and return that
+      const updatedVideo = data.playlist.find(
+        (oldVideo) => currentVideo.title === oldVideo.title
+      );
+
+      if (updatedVideo) {
+        return updatedVideo;
+      } else {
+        return currentVideo;
+      }
+    });
+
+    // Send data back to extension
+    chrome.runtime.sendMessage({
+      playlist: updatedCurrentPlaylist,
+      playlistId: playlistId,
+    });
   });
 };
 
@@ -184,6 +221,5 @@ export const comparePlaylists = (selector1, selector2) => {
   const newlyDeletedVideos = oldPlaylist.filter(
     (oldVideo) => !newPlaylist.find((currentVideo) => oldVideo === currentVideo)
   );
-  console.log(newlyDeletedVideos);
   return [newlyDeletedVideos.length, newlyDeletedVideos];
 };
