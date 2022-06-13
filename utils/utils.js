@@ -84,7 +84,6 @@ export const popupAlert = (message) => {
 // FUNCTIONS INVOLVING THE CONTENT SCRIPT/BEING RUN ON THE ACTUAL WEBSITE---------------------------------------->
 // Injecting a function into the webpage. This function then has access to the webpage dom.
 export const injectFunctionToWebsite = (element, func) => {
-  console.log("inject");
   element.addEventListener("click", async () => {
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     chrome.scripting.executeScript({
@@ -107,10 +106,16 @@ export const handlePlaylist = () => {
     const url = item.querySelector("#thumbnail #thumbnail");
     return { title: title.textContent.trim(), img: img.src, url: url.href };
   });
-  console.log(currentPlaylist);
+
+  // Find playlistId in the url
+  const text = "list=";
+  const url = window.location.href;
+  const number = url.search(text);
+  const playlistId = url.slice(number + 5, number + 5 + 34);
+
   // Fetch playlist and deletedVideos from Chrome storage
   chrome.storage.local.get(["data"], ({ data }) => {
-    const { playlist, deletedVideos, playlistId } = data;
+    const { playlist, deletedVideos } = data;
 
     // Filter out videos that are not found in oldPlaylist and currentPlaylist
     const newlyDeletedVideos = playlist.filter(
@@ -136,6 +141,7 @@ export const handlePlaylist = () => {
       },
     });
   });
+  console.log(playlistId);
 };
 
 // Find playlist on the youtube page and send it back to extension
@@ -150,12 +156,17 @@ export const getPlaylistAndPassMessage = () => {
     const url = item.querySelector("#thumbnail #thumbnail");
     return { title: title.textContent.trim(), img: img.src, url: url.href };
   });
-  let text = "list=";
-  console.log(window.location.href);
-  let n = text.search(/playlist?list=PLVEFS9uzMyHYKBAklGQmv6m38WH_mG5eI/i);
-  console.log(n);
 
-  chrome.runtime.sendMessage({ playlist: currentPlaylist });
+  // Find playlistId in the url
+  const text = "list=";
+  const url = window.location.href;
+  const number = url.search(text);
+  const playlistId = url.slice(number + 5, number + 5 + 34);
+
+  chrome.runtime.sendMessage({
+    playlist: currentPlaylist,
+    playlistId: playlistId,
+  });
 };
 
 // OTHER FUNCTIONS ------------------------------------------------------------------------------------------>
