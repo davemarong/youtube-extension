@@ -28,6 +28,8 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(async () => {
       const date = new Date();
       const dayInMonth = date.getDate();
 
+      console.log(`Last update was: ${lastUpdate}, and today is ${dayInMonth}`);
+
       // If last update auto-sync was today, return
       if (dayInMonth === lastUpdate) return;
 
@@ -40,7 +42,7 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(async () => {
               files: ["./js/contentScripts/autoSyncPlaylist.js"],
             },
             (result) => {
-              console.log(result);
+              console.log("Auto update complete");
             }
           ),
           3000
