@@ -39,16 +39,18 @@ chrome.runtime.onMessage.addListener((request) => {
   const savePlaylist_button_container = document.querySelector(
     ".savePlaylist_button_container"
   );
-  insertHtmlToDom(savePlaylist_button_container, savePlaylist_button_html);
-  savePlaylist_button = document.querySelector(".savePlaylist_button");
-  injectFunctionToWebsite(savePlaylist_button, handlePlaylist);
-  savePlaylist_button.addEventListener("click", () => {
-    const [numberDeletedVideos, deletedVideos] = comparePlaylists(
-      ".oldPlaylist",
-      ".newPlaylist"
-    );
-    popupAlert(popup_synced_message(numberDeletedVideos, deletedVideos));
-  });
+  if (request.playlist.length > 0) {
+    insertHtmlToDom(savePlaylist_button_container, savePlaylist_button_html);
+    savePlaylist_button = document.querySelector(".savePlaylist_button");
+    injectFunctionToWebsite(savePlaylist_button, handlePlaylist);
+    savePlaylist_button.addEventListener("click", () => {
+      const [numberDeletedVideos, deletedVideos] = comparePlaylists(
+        ".oldPlaylist",
+        ".newPlaylist"
+      );
+      popupAlert(popup_synced_message(numberDeletedVideos, deletedVideos));
+    });
+  }
 });
 
 // Update the mainContent and add eventListener to the newly created html

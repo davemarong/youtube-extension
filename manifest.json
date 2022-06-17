@@ -1,13 +1,13 @@
 {
   "name": "Deleted youtube videos",
-  "description": "This extension will save the video titles/names of all your deleted youtube videos from 1 playlist, so you can add them back.",
-  "version": "0.7.1",
+  "description": "This extension will track and sync a youtube playlist automatically, and save the titles of videos thats been removed.",
+  "version": "1.34.2",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js",
     "type": "module"
   },
-  "permissions": ["storage", "activeTab", "scripting","background","contextMenus","webNavigation","tabs"],
+  "permissions": ["storage", "activeTab", "scripting","background","webNavigation","tabs"],
   "host_permissions": [
     "https://www.youtube.com/*"
 ],
