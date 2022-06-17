@@ -43,7 +43,7 @@ All you need is Google Chrome. You can download the extension here. <!-- > Live 
 
 There are 4 options is this extension:
 
-"Find playlist from this youtube page" - By pressing this link, the extension will automaticly search the current webpage for a youtube playlist. If it finds one, it will show you to titles in the playlist so you can double check if its the correct playlist. If you press the "Yes" button, the extension will compare the new playlist with the old playlist. If there are any videos that are missing from the new playlist, these titles will be added to another list. Then it will update your old playlist to the new playlist.
+"Find playlist from this youtube page" - By pressing this link, the extension will automatically search the current webpage for a youtube playlist. If it finds one, it will show you to titles in the playlist so you can double check if its the correct playlist. If you press the "Yes" button, the extension will compare the new playlist with the old playlist. If there are any videos that are missing from the new playlist, these titles will be added to another list. Then it will update your old playlist to the new playlist.
 
 "Show deleted videos" - This will show you all the deleted video titles you have in your list.
 
