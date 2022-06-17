@@ -28,8 +28,6 @@ If you have a playlist of songs on youtube, and some of the videos get taken dow
 
 ## Features
 
-List the ready features here:
-
 - Find your youtube playlist, and with one click you will compare your current playlist to your previous one and save the missing titles.
 - Easy and simple UI
 

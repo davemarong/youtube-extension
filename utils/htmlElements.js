@@ -12,7 +12,7 @@ export const savePlaylist_html = `
     <div class="tooltip">
       Can't find your playlist?
       <ul class="tooltip_text">
-        Make sure you are on a youtube page with your playlist on:
+      Close and re-open the extension and press the "Find playlist from this page" at least 3 times. If that doesn't work, try this:
         <li>1: In the sidebar, click on "Library".</li>
         <li>
           2: Scroll down to your playlist, and click "VIEW FULL PLAYLIST". This
@@ -94,7 +94,7 @@ export const emptyDeletedVideos_html = `
 
 export const searchErrorMessage_newPlaylist = `
   <div class="main_content-error">
-    Sadly, we could not find any playlist. Navigate to a youtube page with a playlist and then click "Find playlist from this youtube page" again.
+    Sadly, we could not find any playlist. Navigate to a youtube page with a playlist and then click "Find playlist from this page" again.
   </div>
   `;
 export const searchErrorMessage_oldPlaylist = `
