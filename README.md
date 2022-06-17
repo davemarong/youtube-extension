@@ -2,7 +2,7 @@
 
 > This extension will save the titles of youtube videos that have been deleted, so you can easily add them back.
 
-<!-- > Live demo [_here_](https://www.example.com). If you have the project hosted somewhere, include the link here. -->
+<!-- > Live demo [_here_](https://www.example.com). If you have the project hosted somewhere, include the link here. --> https://chrome.google.com/webstore/detail/deleted-youtube-videos/nnmnfooidppdikklofabhimjllemfgje?hl=en
 
 ## Table of Contents
 
