@@ -37,7 +37,7 @@ If you have a playlist of songs on youtube, and some of the videos get taken dow
 
 ## Setup
 
-All you need is Google Chrome. You can download the extension here.
+All you need is Google Chrome. You can download the extension here. <!-- > Live demo [_here_](https://www.example.com). If you have the project hosted somewhere, include the link here. --> https://chrome.google.com/webstore/detail/deleted-youtube-videos/nnmnfooidppdikklofabhimjllemfgje?hl=en
 
 ## Usage
 
