@@ -65,6 +65,12 @@ savePlaylist_link.addEventListener("click", () => {
     addCLass("playlist_list", ".oldPlaylist");
   });
   changeHeadline("Find playlist from this page");
+  chrome.storage.local.get("data", ({ data }) => {
+    let lastUpdate = document.querySelector(".lastUpdate");
+    console.log(data.lastUpdate);
+    lastUpdate.textContent = "Last update: " + data.lastUpdate;
+    // console.log(lastUpdate);
+  });
 });
 
 // A functions thats adds an eventListener and upon activating injects as run code on the website

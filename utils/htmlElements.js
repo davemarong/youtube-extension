@@ -1,5 +1,6 @@
 export const savePlaylist_html = `
   <div class="tooltip_container">
+    <p class="lastUpdate">Last update: </p>
     <div class="tooltip">
       Images not showing?
       <span class="tooltip_text">

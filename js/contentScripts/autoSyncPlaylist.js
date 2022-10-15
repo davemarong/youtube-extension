@@ -1,7 +1,8 @@
 // Content script: Find current playlist from youtube, compare and find deleted videos and store data in chrome storage without the user input
 {
   // Get current playlist from Youtube with titles, images and url's
-  const currentPlaylist = [
+  let currentPlaylist = [];
+  currentPlaylist = [
     ...document.querySelectorAll(
       "[page-subtype='playlist'] ytd-playlist-video-renderer"
     ),
@@ -29,6 +30,10 @@
     // Check if new playlist is the same as old playlist
     if (currentPlaylistId !== playlistId) return;
 
+    // Safety check
+    console.log(playlist);
+    if (playlist.length === 0) return;
+
     // Filter out videos that are not found in oldPlaylist and currentPlaylist
     const newlyDeletedVideos = playlist.filter(
       (oldVideo) =>
@@ -36,6 +41,8 @@
           (currentVideo) => oldVideo.title === currentVideo.title
         )
     );
+
+    if (currentPlaylist.length === 0) return;
 
     // Get img-url from oldPlaylist if newPlaylist does not have
     const updatedCurrentPlaylist = currentPlaylist.map((currentVideo) => {
@@ -53,6 +60,8 @@
         return currentVideo;
       }
     });
+
+    console.log("update current [;laylist ", updatedCurrentPlaylist);
 
     // Save the newly created deletedVideos and playlist
     chrome.storage.local.set({

@@ -25,6 +25,8 @@ export const updateMainContentWithLoop = (element, datatype, messageType) => {
   });
 };
 
+//
+
 // Create the html that will confirm if the playlist shown is the right one
 export const createPlaylistConfirmHtml = (
   elementSelector,

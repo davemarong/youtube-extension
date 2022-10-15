@@ -35,17 +35,14 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(async () => {
 
       // Check if current playlist is the same as the saved playlist
       if (url.includes(playlistId)) {
-        setTimeout(
-          chrome.scripting.executeScript(
-            {
-              target: { tabId: tabs[0].id },
-              files: ["./js/contentScripts/autoSyncPlaylist.js"],
-            },
-            (result) => {
-              console.log("Auto update complete");
-            }
-          ),
-          3000
+        chrome.scripting.executeScript(
+          {
+            target: { tabId: tabs[0].id },
+            files: ["./js/contentScripts/autoSyncPlaylist.js"],
+          },
+          (result) => {
+            console.log("Auto update complete");
+          }
         );
       } else {
         console.log("nope. not yet");
