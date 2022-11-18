@@ -179,7 +179,6 @@ export const getPlaylistAndPassMessage = () => {
     const url = item.querySelector("#thumbnail");
     return { title: title.textContent.trim(), img: img.src, url: url.href };
   });
-
   // Find playlistId in the url
   const text = "list=";
   const url = window.location.href;

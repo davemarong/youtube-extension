@@ -17,12 +17,23 @@ const filter = {
   ],
 };
 
+const executeContentScriptAutoSync = async (tabs) => {
+  chrome.scripting.executeScript(
+    {
+      target: { tabId: tabs },
+      files: ["./js/contentScripts/autoSyncPlaylist.js"],
+    },
+    (result) => {
+      console.log("Auto update complete");
+    }
+  );
+};
 chrome.webNavigation.onHistoryStateUpdated.addListener(async () => {
   // Get tab-id and tab-url
   chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
     const url = tabs[0].url;
     chrome.storage.local.get(["data"], ({ data }) => {
-      const { playlistId, lastUpdate } = data;
+      let { playlistId, lastUpdate } = data;
 
       // Get day of month
       const date = new Date();
@@ -31,21 +42,30 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(async () => {
       console.log(`Last update was: ${lastUpdate}, and today is ${dayInMonth}`);
 
       // If last update auto-sync was today, return
-      // if (dayInMonth === lastUpdate) return;
+      if (dayInMonth === lastUpdate) return;
 
       // Check if current playlist is the same as the saved playlist
-      if (url.includes(playlistId)) {
+      if (playlistId.length > 0 && url.includes(playlistId)) {
+        executeContentScriptAutoSync(tabs[0].id);
+      }
+      // If playlist does not exist, check in local storage
+      else {
         chrome.scripting.executeScript(
           {
             target: { tabId: tabs[0].id },
-            files: ["./js/contentScripts/autoSyncPlaylist.js"],
+            files: ["./js/contentScripts/getLocalStorageData.js"],
           },
           (result) => {
-            console.log("Auto update complete");
+            chrome.storage.local.get(["data"], ({ data }) => {
+              let { playlistId } = data;
+              if ((playlistId = true && url.includes(playlistId))) {
+                executeContentScriptAutoSync(tabs[0].id);
+              } else {
+                console.log("nope. not yet");
+              }
+            });
           }
         );
-      } else {
-        console.log("nope. not yet");
       }
     });
   }),
