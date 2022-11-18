@@ -1,7 +1,7 @@
 {
   "name": "Deleted youtube videos",
   "description": "This extension will track and sync a youtube playlist automatically, and save the titles of videos thats been removed.",
-  "version": "1.54.2",
+  "version": "1.54.3",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js",

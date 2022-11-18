@@ -99,15 +99,16 @@ export const handlePlaylist = () => {
   // Get current playlist from Youtube with titles, images and url's
   const currentPlaylist = [
     ...document.querySelectorAll(
-      "[page-subtype='playlist'] ytd-playlist-video-renderer"
+      "[playlist-type='PLVE'] #items #playlist-items"
     ),
   ].map((item) => {
-    const title = item.querySelector("#meta h3 a");
+    const title = item.querySelector("#meta h4 #video-title");
     const img = item.querySelector("#img");
-    const url = item.querySelector("#thumbnail #thumbnail");
+    const url = item.querySelector("#thumbnail");
     return { title: title.textContent.trim(), img: img.src, url: url.href };
   });
 
+  console.log(currentPlaylist);
   // Find playlistId in the url
   const text = "list=";
   const url = window.location.href;
@@ -168,14 +169,14 @@ export const handlePlaylist = () => {
 
 // Find playlist on the youtube page and send it back to extension
 export const getPlaylistAndPassMessage = () => {
-  let currentPlaylist = [
+  const currentPlaylist = [
     ...document.querySelectorAll(
-      "[page-subtype='playlist'] ytd-playlist-video-renderer"
+      "[playlist-type='PLVE'] #items #playlist-items"
     ),
   ].map((item) => {
-    const title = item.querySelector("#meta h3 a");
+    const title = item.querySelector("#meta h4 #video-title");
     const img = item.querySelector("#img");
-    const url = item.querySelector("#thumbnail #thumbnail");
+    const url = item.querySelector("#thumbnail");
     return { title: title.textContent.trim(), img: img.src, url: url.href };
   });
 

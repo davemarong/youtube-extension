@@ -1,15 +1,14 @@
 // Content script: Find current playlist from youtube, compare and find deleted videos and store data in chrome storage without the user input
 {
   // Get current playlist from Youtube with titles, images and url's
-  let currentPlaylist = [];
-  currentPlaylist = [
+  const currentPlaylist = [
     ...document.querySelectorAll(
-      "[page-subtype='playlist'] ytd-playlist-video-renderer"
+      "[playlist-type='PLVE'] #items #playlist-items"
     ),
   ].map((item) => {
-    const title = item.querySelector("#meta h3 a");
+    const title = item.querySelector("#meta h4 #video-title");
     const img = item.querySelector("#img");
-    const url = item.querySelector("#thumbnail #thumbnail");
+    const url = item.querySelector("#thumbnail");
     return { title: title.textContent.trim(), img: img.src, url: url.href };
   });
 
@@ -25,14 +24,21 @@
 
   // Fetch playlist and deletedVideos from Chrome storage
   chrome.storage.local.get(["data"], ({ data }) => {
-    let { playlist, deletedVideos, playlistId } = data;
+    let { playlist, deletedVideos, playlistId, lastUpdate } = data;
+
+    // If playlistData is empty, try to get from LocalStorage
+    if (playlist.length === 0) {
+      const playlistData = JSON.parse(localStorage.getItem("playlistData"));
+      if (playlistData) {
+        playlist = playlistData.playlist;
+        deletedVideos = playlistData.deletedVideos;
+        playlistId = playlistData.playlistId;
+        lastUpdate = playlistData.lastUpdate;
+      } else return;
+    }
 
     // Check if new playlist is the same as old playlist
     if (currentPlaylistId !== playlistId) return;
-
-    // Safety check
-    console.log(playlist);
-    if (playlist.length === 0) return;
 
     // Filter out videos that are not found in oldPlaylist and currentPlaylist
     const newlyDeletedVideos = playlist.filter(
@@ -61,7 +67,7 @@
       }
     });
 
-    console.log("update current [;laylist ", updatedCurrentPlaylist);
+    console.log("update current playlist ", updatedCurrentPlaylist);
 
     // Save the newly created deletedVideos and playlist
     chrome.storage.local.set({
@@ -79,6 +85,15 @@
         lastUpdate: dayInMonth,
       },
     });
+    localStorage.setItem(
+      "playlistData",
+      JSON.stringify({
+        playlist: updatedCurrentPlaylist,
+        deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
+        playlistId: playlistId,
+        lastUpdate: dayInMonth,
+      })
+    );
   });
-  console.log("Playlist updated");
+  console.log("Playlist updated automaticly");
 }
