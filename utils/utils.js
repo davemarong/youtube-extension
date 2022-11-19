@@ -117,7 +117,8 @@ export const handlePlaylist = () => {
 
   // Get day of month
   const date = new Date();
-  const dayInMonth = date.getDate();
+  const [day, month, dayInMonth] = date.toString().split(" ");
+  const dayAndMonth = `${month} ${dayInMonth}`;
 
   // Fetch playlist and deletedVideos from Chrome storage
   chrome.storage.local.get(["data"], ({ data }) => {
@@ -161,9 +162,18 @@ export const handlePlaylist = () => {
         playlist: updatedCurrentPlaylist,
         deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
         playlistId: playlistId,
-        lastUpdate: dayInMonth,
+        lastUpdate: dayAndMonth,
       },
     });
+    localStorage.setItem(
+      "playlistData",
+      JSON.stringify({
+        playlist: updatedCurrentPlaylist,
+        deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
+        playlistId: playlistId,
+        lastUpdate: dayAndMonth,
+      })
+    );
   });
 };
 

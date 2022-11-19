@@ -20,7 +20,8 @@
 
   // Get day of month
   const date = new Date();
-  const dayInMonth = date.getDate();
+  const [day, month, dayInMonth] = date.toString().split(" ");
+  const dayAndMonth = `${month} ${dayInMonth}`;
 
   // Fetch playlist and deletedVideos from Chrome storage
   chrome.storage.local.get(["data"], ({ data }) => {
@@ -82,7 +83,7 @@
         playlist: updatedCurrentPlaylist,
         deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
         playlistId: playlistId,
-        lastUpdate: dayInMonth,
+        lastUpdate: dayAndMonth,
       },
     });
     localStorage.setItem(
@@ -91,7 +92,7 @@
         playlist: updatedCurrentPlaylist,
         deletedVideos: [...deletedVideos, ...newlyDeletedVideos],
         playlistId: playlistId,
-        lastUpdate: dayInMonth,
+        lastUpdate: dayAndMonth,
       })
     );
   });

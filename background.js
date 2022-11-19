@@ -3,6 +3,7 @@ let data = {
   deletedVideos: [],
   playlistId: "",
   lastUpdate: "",
+  updateBackups: [],
 };
 chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.local.set({ data });
@@ -37,12 +38,13 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(async () => {
 
       // Get day of month
       const date = new Date();
-      const dayInMonth = date.getDate();
-
+      const [day, month, dayInMonth] = date.toString().split(" ");
+      const dayAndMonth = `${month} ${dayInMonth}`;
+      console.log(dayAndMonth);
       console.log(`Last update was: ${lastUpdate}, and today is ${dayInMonth}`);
 
       // If last update auto-sync was today, return
-      if (dayInMonth === lastUpdate) return;
+      if (dayAndMonth === lastUpdate) return;
 
       // Check if current playlist is the same as the saved playlist
       if (playlistId.length > 0 && url.includes(playlistId)) {
